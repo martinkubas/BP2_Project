@@ -1,26 +1,38 @@
 [build-system]
 requires = ["setuptools>=64"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "bakalarka"
 version = "0.1.0"
 requires-python = ">=3.10"
 dependencies = [
+    # Core PDF processing
     "PyMuPDF",
     "regex",
+    # NLP / sentence splitting
     "spacy",
+    # Embeddings & ML
     "torch",
     "sentence-transformers",
+    "tf-keras",  #keras 3 is not yet supported by transformers
+    # Vector database
     "pymilvus",
+    # HTTP / source retrieval
     "requests",
+    # GROBID / XML parsing
     "lxml",
+    # Analysis & plotting
     "numpy",
     "pandas",
     "matplotlib",
     "seaborn",
+    # Report generation
     "reportlab",
     "pypdf",
+    # Environment variable loading
+    "python-dotenv",
+    # Optional embedding backends: pip install voyageai or openai
 ]
 
 [tool.setuptools.packages.find]

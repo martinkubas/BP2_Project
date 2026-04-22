@@ -48,12 +48,11 @@ scripts/
 ## Step 1 — Install Python dependencies
 
 ```bash
-pip install -r requirements.txt
-pip install -e .
+python -m pip install -e .
 python -m spacy download xx_sent_ud_sm
 ```
 
-`pip install -e .` registers the packages under `src/` as importable without any PYTHONPATH configuration. Run it once after cloning.
+`pip install -e .` installs all dependencies and registers the packages under `src/` as importable without any PYTHONPATH configuration. Run it once after cloning.
 
 ---
 
@@ -81,20 +80,25 @@ docker compose down -v
 
 ## Step 3 — Set environment variables
 
-The downloader uses the CrossRef API to resolve DOIs. A contact email is required by CrossRef's polite pool policy:
+Copy `.env.example` to `.env` and fill in your values:
 
 ```bash
-export CROSSREF_MAILTO="your.email@example.com"
+cp .env.example .env
 ```
 
-Optional API keys for additional download sources:
+Then edit `.env`:
 
-```bash
-export ELSEVIER_API_KEY=""       # Elsevier full-text API
-export ELSEVIER_INSTTOKEN=""     # Elsevier institutional token
-export IEEE_API_KEY=""           # IEEE Xplore API
-export SPRINGER_OA_API_KEY=""    # Springer Open Access API
-export SPRINGER_META_API_KEY=""  # Springer Metadata API
+```dotenv
+CROSSREF_MAILTO=your.email@example.com
+
+ELSEVIER_API_KEY=
+ELSEVIER_INSTTOKEN=
+IEEE_API_KEY=
+SPRINGER_OA_API_KEY=
+SPRINGER_META_API_KEY=
+
+VOYAGE_API_KEY=
+OPENAI_API_KEY=
 ```
 
 ---

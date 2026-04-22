@@ -4,6 +4,9 @@ from __future__ import annotations
 import argparse
 import json
 import os
+
+from dotenv import load_dotenv
+load_dotenv()
 import re
 import subprocess
 import sys
@@ -227,7 +230,7 @@ def main() -> int:
 
     ap.add_argument("--output", required=True, help="Output root folder for everything")
 
-    ap.add_argument("--crossref-mailto", default="", help="Crossref mailto")
+    ap.add_argument("--crossref-mailto", default=os.getenv("CROSSREF_MAILTO", ""), help="Crossref mailto")
     ap.add_argument("--timeout", type=int, default=60)
     ap.add_argument("--connect-timeout", type=int, default=5)
     ap.add_argument("--sleep", type=float, default=0.0)

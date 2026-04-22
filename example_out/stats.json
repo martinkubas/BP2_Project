@@ -1,0 +1,29 @@
+{
+  "totals": {
+    "works": 1,
+    "references": 39,
+    "doi_found": 31,
+    "no_doi": 8,
+    "pdf_ok": 19,
+    "pdf_fail": 12,
+    "abstract_ok": 5,
+    "abstract_fail": 7,
+    "by_provider_pdf_ok": {
+      "arxiv": 8,
+      "elsevier": 3,
+      "springer_oa": 0,
+      "http": 8
+    }
+  },
+  "per_work": {
+    "main.json": {
+      "references": 39,
+      "doi_found": 31,
+      "no_doi": 8,
+      "pdf_ok": 19,
+      "pdf_fail": 12,
+      "abstract_ok": 5,
+      "abstract_fail": 7
+    }
+  }
+}
