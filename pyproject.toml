@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "bakalarka"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "PyMuPDF",
+    "regex",
+    "spacy",
+    "torch",
+    "sentence-transformers",
+    "pymilvus",
+    "requests",
+    "lxml",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "seaborn",
+    "reportlab",
+    "pypdf",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

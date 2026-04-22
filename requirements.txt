@@ -1,0 +1,33 @@
+# Core PDF processing
+PyMuPDF
+regex
+
+# NLP / sentence splitting
+spacy
+
+# Embeddings & ML
+torch
+sentence-transformers
+
+# Vector database
+pymilvus
+
+# HTTP / source retrieval
+requests
+
+# GROBID / XML parsing
+lxml
+
+# Analysis & plotting
+numpy
+pandas
+matplotlib
+seaborn
+
+# Report generation
+reportlab
+pypdf
+
+# Optional embedding backends
+# pip install voyageai   — for voyage-3 / voyage-3-large
+# pip install openai     — for text-embedding-3-small / text-embedding-3-large
