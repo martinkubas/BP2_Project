@@ -88,7 +88,12 @@ def main() -> int:
         "labels": {"supported": 0, "related": 0, "no_support": 0},
     }
 
-    for work_json_path in iter_json_files(enriched_dir):
+    work_json_files = list(iter_json_files(enriched_dir))
+    work_count = len(work_json_files)
+    print(f"[verify] {work_count} work file(s) in {enriched_dir}", flush=True)
+
+    for work_index, work_json_path in enumerate(work_json_files, start=1):
+        print(f"[Work {work_index}/{work_count}] {work_json_path.name}", flush=True)
         work_data = load_json(work_json_path)
         links: List[Dict[str, Any]] = work_data.get("links") or []
         if not isinstance(links, list):

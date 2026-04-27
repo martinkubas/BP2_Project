@@ -41,7 +41,8 @@ def run(
     if enriched_dir is None:
         enriched_dir = input_dir
 
-    for directory in (output_dir, output_dir / "pdfs", output_dir / "abstracts", enriched_dir):
+    log_dir = output_dir / "logs"
+    for directory in (output_dir, output_dir / "pdfs", output_dir / "abstracts", log_dir, enriched_dir):
         directory.mkdir(parents=True, exist_ok=True)
 
     config = DownloadConfig(
@@ -54,6 +55,8 @@ def run(
         crossref_min_score=crossref_min_score,
         pdf_dir=output_dir / "pdfs",
         abstract_dir=output_dir / "abstracts",
+        log_dir=log_dir,
+        transmission_log_path=log_dir / "provider_api.csv",
         output_dir=output_dir,
         enriched_dir=enriched_dir,
     )
@@ -68,6 +71,7 @@ def run(
     log(f"[Start] {len(json_files)} JSON file(s) in {input_dir}")
     log(f"[Out]   PDFs:      {config.pdf_dir}")
     log(f"[Out]   Abstracts: {config.abstract_dir}")
+    log(f"[Out]   Logs:      {config.transmission_log_path}")
     log(f"[Out]   Enriched:  {enriched_dir}")
 
     for work_index, work_path in enumerate(json_files, start=1):

@@ -37,11 +37,10 @@ from .http_downloader import download_pdf_http
 from .providers import (
     detect_provider,
     download_elsevier_pdf,
-    download_springer_oa_pdf,
+    download_ieee_pdf,
+    download_springer_pdf,
     elsevier_abstract,
-    ieee_abstract,
     save_abstract,
-    springer_meta_abstract,
 )
 from .utils import (
     DownloadConfig,
@@ -54,7 +53,8 @@ from .utils import (
 _PROVIDER_STAT_KEY: Dict[str, str] = {
     "arxiv":    "arxiv",
     "elsevier": "elsevier",
-    "springer": "springer_oa",
+    "springer": "springer",
+    "ieee":     "ieee",
 }
 
 
@@ -118,18 +118,23 @@ def attempt_provider_download(
     if provider == "elsevier":
         log("    [Provider] Elsevier")
         return download_elsevier_pdf(
-            session, doi, out_pdf, config.connect_timeout, config.read_timeout,
+            session, doi, out_pdf, config.transmission_log_path,
+            config.connect_timeout, config.read_timeout,
         )
 
     if provider == "springer":
-        log("    [Provider] Springer OA")
-        return download_springer_oa_pdf(
-            session, doi, out_pdf, config.connect_timeout, config.read_timeout,
+        log("    [Provider] Springer full text")
+        return download_springer_pdf(
+            session, doi, out_pdf, config.transmission_log_path,
+            config.connect_timeout, config.read_timeout,
         )
 
     if provider == "ieee":
-        log("    [Provider] IEEE (no PDF available via this pipeline)")
-        return False, None, "ieee pdf not available via this pipeline (metadata only)"
+        log("    [Provider] IEEE full text")
+        return download_ieee_pdf(
+            session, doi, out_pdf, config.transmission_log_path,
+            config.connect_timeout, config.read_timeout,
+        )
 
     return False, None, "no provider"
 
@@ -180,11 +185,10 @@ def fetch_abstract_fallback(
             return abstract
 
     if provider == "elsevier":
-        return elsevier_abstract(session, doi, config.connect_timeout, config.read_timeout)
-    if provider == "ieee":
-        return ieee_abstract(session, doi, config.connect_timeout, config.read_timeout)
-    if provider == "springer":
-        return springer_meta_abstract(session, doi, config.connect_timeout, config.read_timeout)
+        return elsevier_abstract(
+            session, doi, config.transmission_log_path,
+            config.connect_timeout, config.read_timeout,
+        )
 
     return ""
 
@@ -322,6 +326,9 @@ def process_reference(
         return
 
     if provider:
+        stat_key = _PROVIDER_STAT_KEY.get(provider or "")
+        if stat_key:
+            stats["by_provider_pdf_fail"][stat_key] += 1
         log(f"    [Provider] failed: {download_error}")
 
     # ---- 5: HTTP fallback ----------------------------------------------
@@ -343,6 +350,8 @@ def process_reference(
         bump_both(stats, work_stats, "pdf_ok")
         log("    [OK] downloaded via HTTP fallback")
         return
+
+    stats["by_provider_pdf_fail"]["http"] += 1
 
     # ---- 6: Abstract fallback ------------------------------------------
     bump_both(stats, work_stats, "pdf_fail")

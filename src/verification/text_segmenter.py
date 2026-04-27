@@ -60,8 +60,10 @@ class TEISegmenter:
     ) -> str:
         tei_cache_path = self.tei_cache_dir / f"{source_key_slug}.tei.xml"
         if tei_cache_path.exists():
+            print(f"  [TEI cache] {source_key_slug}", flush=True)
             return tei_cache_path.read_text(encoding="utf-8", errors="ignore")
 
+        print(f"  [Grobid] processing {source_key_slug}", flush=True)
         tei_xml = grobid_client.process_fulltext_tei(pdf_path)
         tei_cache_path.write_text(tei_xml, encoding="utf-8")
         return tei_xml
