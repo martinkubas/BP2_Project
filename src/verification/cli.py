@@ -39,6 +39,8 @@ def main() -> int:
         help="Output root folder (same --output used in earlier pipeline stages).",
     )
     argument_parser.add_argument("--grobid-url",     default="http://localhost:8070")
+    argument_parser.add_argument("--tei-cache-dir",  default="",
+                                 help="Shared TEI cache directory. Defaults to <output>/cache/tei.")
     argument_parser.add_argument("--milvus-uri",     default="http://localhost:19530",
                                  help="Milvus connection URI, e.g. http://localhost:19530")
     argument_parser.add_argument("--embed-model",    default="sentence-transformers/paraphrase-xlm-r-multilingual-v1")
@@ -53,7 +55,13 @@ def main() -> int:
 
     enriched_dir  = Path(args.enriched).expanduser().resolve()
     output_dir    = Path(args.output).expanduser().resolve()
-    tei_cache_dir = output_dir / "cache" / "tei"
+    tei_cache_dir = (
+        Path(args.tei_cache_dir).expanduser().resolve()
+        if args.tei_cache_dir
+        else output_dir / "cache" / "tei"
+    )
+    if args.tei_cache_dir:
+        print(f"[verify] tei-cache-dir={tei_cache_dir} (shared)", flush=True)
     verified_dir  = output_dir / "verified_json"
     reports_dir   = output_dir / "verification_reports"
     verified_dir.mkdir(parents=True, exist_ok=True)
@@ -102,13 +110,16 @@ def main() -> int:
         run_summary["totals"]["works"] += 1
         run_summary["totals"]["links"] += len(links)
 
-        for link in links:
+        link_count = len(links)
+        for link_index, link in enumerate(links, start=1):
             if not isinstance(link, dict):
                 continue
 
             reference_data = link.get("reference") or {}
             download_info  = reference_data.get("download") or {}
             download_status = download_info.get("status")
+            link_doi = reference_data.get("resolved_doi") or reference_data.get("doi") or "?"
+            print(f"  [Link {link_index}/{link_count}] {link_doi}", flush=True)
 
             pdf_path:      Path | None = None
             abstract_path: Path | None = None
@@ -124,6 +135,7 @@ def main() -> int:
             elif download_status == "downloaded" and download_info.get("pdf_path"):
                 candidate_path = (output_dir / Path(download_info["pdf_path"])).resolve()
                 if not candidate_path.exists():
+                    print(f"    [Skip] pdf_missing: {download_info['pdf_path']}", flush=True)
                     run_summary["totals"]["skipped_links"] += 1
                     link["verification"] = {
                         "status":   "pdf_missing",
@@ -163,6 +175,7 @@ def main() -> int:
             if vectors_guaranteed_in_milvus:
                 # Safety check: Milvus could have been wiped since Stage 1 ran.
                 if not milvus_store.has_source(source_key):
+                    print(f"    [Skip] milvus_data_missing", flush=True)
                     run_summary["totals"]["skipped_links"] += 1
                     link["verification"] = {
                         "status":  "milvus_data_missing",
@@ -170,6 +183,7 @@ def main() -> int:
                         "hint":    "Milvus may have been reset. Re-run Stage 1 without --milvus-uri to re-download.",
                     }
                     continue
+                print(f"    [Milvus] already indexed", flush=True)
             elif not milvus_store.has_source(source_key):
                 try:
                     if pdf_path is not None:
@@ -184,7 +198,7 @@ def main() -> int:
                         segments = tei_segmenter.segments_from_abstract_text(abstract_text)
 
                     if not segments:
-                        print(f"[verify] warning: no segments extracted for {source_key}")
+                        print(f"    [Skip] no segments extracted from {source_type}", flush=True)
                         run_summary["totals"]["skipped_links"] += 1
                         link["verification"] = {"status": "empty_reference_index", "ref_key": str(raw_ref_key)}
                         continue
@@ -192,14 +206,18 @@ def main() -> int:
                     segment_texts = [segment.text for segment in segments]
                     embedding_matrix = embedder.encode(segment_texts)
                     milvus_store.store_segments(source_key, source_type, segments, embedding_matrix)
+                    print(f"    [Milvus] stored {len(segments)} segments", flush=True)
 
                 except Exception as indexing_error:
+                    print(f"    [Skip] indexing failed: {indexing_error!r}", flush=True)
                     run_summary["totals"]["skipped_links"] += 1
                     link["verification"] = {
                         "status": "ref_index_failed",
                         "error":  repr(indexing_error),
                     }
                     continue
+            else:
+                print(f"    [Milvus] already indexed — skipping Grobid", flush=True)
 
             verification_result = verify_link(
                 link=link,
@@ -224,10 +242,23 @@ def main() -> int:
 
             if verification_result.get("status") == "ok":
                 run_summary["totals"]["verified_links"] += 1
-                for sentence_result in verification_result["results"]:
+                results = verification_result["results"]
+                label_counts = {"supported": 0, "related": 0, "no_support": 0}
+                best_sim = 0.0
+                for sentence_result in results:
                     label = sentence_result.get("label")
                     if label in run_summary["labels"]:
                         run_summary["labels"][label] += 1
+                    if label in label_counts:
+                        label_counts[label] += 1
+                    best_sim = max(best_sim, sentence_result.get("best_sim") or 0.0)
+                print(
+                    f"    [Result] supported={label_counts['supported']} "
+                    f"related={label_counts['related']} "
+                    f"no_support={label_counts['no_support']} "
+                    f"best_sim={best_sim:.3f}",
+                    flush=True,
+                )
             else:
                 run_summary["totals"]["skipped_links"] += 1
 

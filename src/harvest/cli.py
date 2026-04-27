@@ -30,6 +30,8 @@ def run(
     crossref_min_score: float = 0.25,
     milvus_uri: str = "",
     embed_model: str = "",
+    pdf_dir: Path | None = None,
+    abstract_dir: Path | None = None,
 ) -> int:
     """
     Returns 0 on success. Individual reference errors are logged but never abort
@@ -41,8 +43,10 @@ def run(
     if enriched_dir is None:
         enriched_dir = input_dir
 
+    resolved_pdf_dir = pdf_dir if pdf_dir is not None else output_dir / "pdfs"
+    resolved_abstract_dir = abstract_dir if abstract_dir is not None else output_dir / "abstracts"
     log_dir = output_dir / "logs"
-    for directory in (output_dir, output_dir / "pdfs", output_dir / "abstracts", log_dir, enriched_dir):
+    for directory in (output_dir, resolved_pdf_dir, resolved_abstract_dir, log_dir, enriched_dir):
         directory.mkdir(parents=True, exist_ok=True)
 
     config = DownloadConfig(
@@ -53,8 +57,8 @@ def run(
         overwrite=overwrite,
         max_refs_per_work=max_refs_per_work,
         crossref_min_score=crossref_min_score,
-        pdf_dir=output_dir / "pdfs",
-        abstract_dir=output_dir / "abstracts",
+        pdf_dir=resolved_pdf_dir,
+        abstract_dir=resolved_abstract_dir,
         log_dir=log_dir,
         transmission_log_path=log_dir / "provider_api.csv",
         output_dir=output_dir,
@@ -69,8 +73,8 @@ def run(
 
     json_files = list(iter_json_files(input_dir))
     log(f"[Start] {len(json_files)} JSON file(s) in {input_dir}")
-    log(f"[Out]   PDFs:      {config.pdf_dir}")
-    log(f"[Out]   Abstracts: {config.abstract_dir}")
+    log(f"[Out]   PDFs:      {config.pdf_dir}{' (shared)' if pdf_dir is not None else ''}")
+    log(f"[Out]   Abstracts: {config.abstract_dir}{' (shared)' if abstract_dir is not None else ''}")
     log(f"[Out]   Logs:      {config.transmission_log_path}")
     log(f"[Out]   Enriched:  {enriched_dir}")
 

@@ -3,6 +3,7 @@ Text segmentation for reference documents.
 """
 from __future__ import annotations
 
+import time
 from pathlib import Path
 from typing import TYPE_CHECKING, List
 
@@ -15,6 +16,9 @@ if TYPE_CHECKING:
     from .grobid_client import GrobidClient
 
 TEI_NAMESPACE = {"tei": "http://www.tei-c.org/ns/1.0"}
+
+_LOCK_POLL_INTERVAL = 1    # seconds between polls while waiting for another instance
+_LOCK_TIMEOUT       = 90  # seconds before assuming the lock holder crashed
 
 # Minimum character counts used to filter out very short fragments that add
 # noise to the index without contributing meaningful semantic content.
@@ -59,14 +63,43 @@ class TEISegmenter:
         grobid_client: "GrobidClient",
     ) -> str:
         tei_cache_path = self.tei_cache_dir / f"{source_key_slug}.tei.xml"
+        lock_path      = self.tei_cache_dir / f"{source_key_slug}.tei.xml.lock"
+
         if tei_cache_path.exists():
             print(f"  [TEI cache] {source_key_slug}", flush=True)
             return tei_cache_path.read_text(encoding="utf-8", errors="ignore")
 
-        print(f"  [Grobid] processing {source_key_slug}", flush=True)
-        tei_xml = grobid_client.process_fulltext_tei(pdf_path)
-        tei_cache_path.write_text(tei_xml, encoding="utf-8")
-        return tei_xml
+        # Try to acquire an exclusive lock so only one instance calls Grobid.
+        lock_acquired = False
+        try:
+            open(lock_path, "x").close()
+            lock_acquired = True
+        except FileExistsError:
+            pass
+
+        if not lock_acquired:
+            print(f"  [Grobid] {source_key_slug} — waiting for another instance to finish", flush=True)
+            waited = 0
+            while waited < _LOCK_TIMEOUT:
+                time.sleep(_LOCK_POLL_INTERVAL)
+                waited += _LOCK_POLL_INTERVAL
+                if tei_cache_path.exists():
+                    print(f"  [TEI cache] {source_key_slug} (waited {waited}s)", flush=True)
+                    return tei_cache_path.read_text(encoding="utf-8", errors="ignore")
+            # Lock holder appears to have crashed — proceed without the lock.
+            print(f"  [Grobid] {source_key_slug} — lock timeout, processing anyway", flush=True)
+
+        try:
+            print(f"  [Grobid] processing {source_key_slug}", flush=True)
+            tei_xml = grobid_client.process_fulltext_tei(pdf_path)
+            # Write to a temp file then rename so the cache path is never partially written.
+            tmp_path = tei_cache_path.with_name(tei_cache_path.name + ".tmp")
+            tmp_path.write_text(tei_xml, encoding="utf-8")
+            tmp_path.replace(tei_cache_path)
+            return tei_xml
+        finally:
+            if lock_acquired:
+                lock_path.unlink(missing_ok=True)
 
     def segments_from_tei(self, tei_xml: str) -> List[Segment]:
         root = etree.fromstring(tei_xml.encode("utf-8", errors="ignore"))

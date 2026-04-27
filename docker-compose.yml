@@ -8,13 +8,13 @@ services:
     init: true
     restart: unless-stopped
     environment:
-      - JAVA_OPTS=-Xms1g -Xmx6g -XX:+UseG1GC -XX:MaxGCPauseMillis=200
+      - JAVA_OPTS=-Xms2g -Xmx8g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Dgrobid.nb_threads=4
     ulimits:
       core: 0
     deploy:
       resources:
         limits:
-          memory: 8g
+          memory: 10g
     healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:8070/api/isalive || wget -q --spider http://localhost:8070/api/isalive"]
       interval: 30s

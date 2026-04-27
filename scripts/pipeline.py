@@ -246,6 +246,13 @@ def main() -> int:
     ap.add_argument("--support-thresh", type=float, default=0.62)
     ap.add_argument("--related-thresh", type=float, default=0.42)
 
+    ap.add_argument(
+        "--shared-dir", default="",
+        help=(
+            "Optional shared directory for PDFs, abstracts, and TEI cache. "
+        ),
+    )
+
     ap.add_argument("--skip-detect", action="store_true", help="Skip detect stage")
     ap.add_argument("--skip-download", action="store_true", help="Skip harvest stage")
     ap.add_argument("--skip-verify", action="store_true", help="Skip verify stage")
@@ -259,6 +266,19 @@ def main() -> int:
     work_json_dir = out_dir / "work_json"
     enriched_dir = out_dir / "enriched"
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    shared_dir = Path(args.shared_dir).expanduser().resolve() if args.shared_dir else None
+    if shared_dir is not None:
+        shared_pdf_dir      = shared_dir / "pdfs"
+        shared_abstract_dir = shared_dir / "abstracts"
+        shared_tei_dir      = shared_dir / "cache" / "tei"
+        for d in (shared_pdf_dir, shared_abstract_dir, shared_tei_dir):
+            d.mkdir(parents=True, exist_ok=True)
+        print(f"[shared] pdfs={shared_pdf_dir}")
+        print(f"[shared] abstracts={shared_abstract_dir}")
+        print(f"[shared] tei-cache={shared_tei_dir}")
+    else:
+        shared_pdf_dir = shared_abstract_dir = shared_tei_dir = None
 
     # ---- Stage 0 ----
     if not args.skip_detect:
@@ -297,6 +317,8 @@ def main() -> int:
             crossref_min_score=args.crossref_min_score,
             milvus_uri=args.milvus_uri,
             embed_model=args.embed_model,
+            pdf_dir=shared_pdf_dir,
+            abstract_dir=shared_abstract_dir,
         )
     else:
         if not enriched_dir.exists():
@@ -317,6 +339,8 @@ def main() -> int:
         ]
         if args.device:
             verifier_cmd += ["--device", args.device]
+        if shared_tei_dir is not None:
+            verifier_cmd += ["--tei-cache-dir", str(shared_tei_dir)]
 
         print("[stage2] grobid segment + embed + verify citations")
         _run_command(verifier_cmd)

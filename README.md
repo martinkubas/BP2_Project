@@ -16,7 +16,7 @@ The pipeline runs in three stages:
 
 Results are written to `out/verified_json/` and `out/verification_reports/`.
 
-To analyse results you may use analysis script after the pipeline finishes. Refer to `docs/analysis.md` for more info.
+To analyse results you may use analysis script after the pipeline finishes. Refer to [docs/analysis.md](analysis.md) for more info.
 
 ---
 
