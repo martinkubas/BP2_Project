@@ -37,6 +37,7 @@ def main() -> None:
 
     refs_out = out_dir / "refs"
     sim_out = out_dir / "similarity"
+    prov_out = out_dir / "providers"
 
     if not in_dir.exists():
         print(f"Error: --in-dir does not exist: {in_dir}", file=sys.stderr)
@@ -68,9 +69,22 @@ def main() -> None:
     if args.faculty_name:
         sim_cmd += ["--faculty-name", args.faculty_name]
 
+    prov_cmd = [
+        sys.executable, str(SCRIPT_DIR / "analyze_providers.py"),
+        "--in-dir", str(in_dir),
+        "--out-dir", str(prov_out),
+        "--dpi", str(args.dpi),
+        "--fig-width", str(args.fig_width),
+    ]
+    if args.show:
+        prov_cmd.append("--show")
+    if args.faculty_name:
+        prov_cmd += ["--faculty-name", args.faculty_name]
+
     tasks = [
         (refs_cmd, "analyze_refs"),
         (sim_cmd, "analyze_similarity"),
+        (prov_cmd, "analyze_providers"),
     ]
 
     if args.show:
@@ -84,9 +98,9 @@ def main() -> None:
                 all_ok = False
         sys.exit(0 if all_ok else 1)
     else:
-        print("[analyze] Running analyze_refs and analyze_similarity in parallel ...\n")
+        print("[analyze] Running analyze_refs, analyze_similarity, and analyze_providers in parallel ...\n")
         results = {}
-        with ThreadPoolExecutor(max_workers=2) as executor:
+        with ThreadPoolExecutor(max_workers=3) as executor:
             futures = {executor.submit(run_script, cmd, label): label
                        for cmd, label in tasks}
             for future in as_completed(futures):
@@ -109,6 +123,7 @@ def main() -> None:
             print(f"\n[analyze] Done. Results in:")
             print(f"  {refs_out}")
             print(f"  {sim_out}")
+            print(f"  {prov_out}")
         sys.exit(0 if all_ok else 1)
 
 
