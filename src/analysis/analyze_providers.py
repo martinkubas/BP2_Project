@@ -1,7 +1,6 @@
 import argparse
 import csv
 import json
-import math
 import re
 import sys
 from collections import Counter
@@ -18,7 +17,6 @@ import seaborn as sns
 
 # ---------------------------------------------------------------------------
 # DOI prefix → publisher name table
-# (only needed for undownloaded-publisher analysis)
 # ---------------------------------------------------------------------------
 
 _DOI_PREFIX_MAP: list[tuple[str, str]] = [
@@ -61,9 +59,15 @@ _DOI_PREFIX_MAP: list[tuple[str, str]] = [
     ("10.1142", "World Scientific"),
     ("10.4230", "Schloss Dagstuhl (LIPIcs)"),
     ("10.18653", "ACL Anthology"),
+    ("10.1201", "CRC Press / Taylor & Francis"),
+    ("10.1163", "Brill"),
+    ("10.3403", "BSI"),
+    ("10.4135", "SAGE Publications"),
+    ("10.17487", "IETF / RFC Editor"),
+    ("10.2139", "SSRN (Elsevier)"),
+    ("10.1108", "Emerald Publishing"),
 ]
 
-# Sorted by prefix length descending so longest match wins
 _DOI_PREFIX_MAP.sort(key=lambda t: len(t[0]), reverse=True)
 
 
@@ -74,58 +78,18 @@ def _publisher_from_doi(doi: str | None) -> str:
     for prefix, name in _DOI_PREFIX_MAP:
         if doi_lower.startswith(prefix):
             return name
-    # Fall back to the raw prefix (e.g. "10.XXXX")
     parts = doi_lower.split("/", 1)
     return parts[0] if parts else "Unknown"
 
 
 # ---------------------------------------------------------------------------
-# Category mapping: (status, provider) → display label
+# Status sets
 # ---------------------------------------------------------------------------
 
 _SUCCESS_STATUSES = {"downloaded", "already_indexed"}
+_NO_DOI_STATUSES = {"no_doi", "no_valid_doi"}
 
-_CATEGORY_COLORS: dict[str, str] = {
-    "Springer (downloaded)": "#1a7fc1",
-    "IEEE (downloaded)": "#005b96",
-    "Elsevier (downloaded)": "#0e4d92",
-    "arXiv (downloaded)": "#2494c7",
-    "HTTP (downloaded)": "#56b4e9",
-    "Abstract only": "#98df8a",
-    "Download failed": "#d62728",
-    "Not open access": "#ff7f0e",
-    "Invalid/missing DOI": "#ffbb78",
-    "Work not found": "#9467bd",
-    "No DOI": "#c5b0d5",
-    "Other": "#7f7f7f",
-}
-
-_CATEGORY_ORDER = list(_CATEGORY_COLORS.keys())
-
-
-def _ref_category(status: str, provider: str | None) -> str:
-    if status in _SUCCESS_STATUSES:
-        p = (provider or "").lower()
-        if p == "springer":
-            return "Springer (downloaded)"
-        if p == "ieee":
-            return "IEEE (downloaded)"
-        if p == "elsevier":
-            return "Elsevier (downloaded)"
-        if p == "arxiv":
-            return "arXiv (downloaded)"
-        return "HTTP (downloaded)"
-    mapping = {
-        "abstract_saved": "Abstract only",
-        "download_failed": "Download failed",
-        "not_open_access": "Not open access",
-        "no_valid_doi": "Invalid/missing DOI",
-        "work_not_found": "Work not found",
-        "no_doi": "No DOI",
-        "empty_reference_index": "Other",
-        "other": "Other",
-    }
-    return mapping.get(status, "Other")
+_BAR_BLUE = "#3a6ea5"
 
 
 # ---------------------------------------------------------------------------
@@ -135,16 +99,31 @@ def _ref_category(status: str, provider: str | None) -> str:
 _URL_RE = re.compile(r'https?://[^\s\])"\'<>]+')
 
 
+_TLD_LIKE = {"co", "ac", "gov", "org", "net", "com", "edu"}
+
+
 def _extract_domain(raw: str) -> str | None:
     m = _URL_RE.search(raw)
     if not m:
         return None
-    netloc = urlparse(m.group()).netloc
-    return netloc.removeprefix("www.") or None
+
+    netloc = urlparse(m.group()).netloc.removeprefix("www.")
+
+    if not netloc:
+        return None
+
+    parts = [p for p in netloc.split(".") if p]
+    if len(parts) == 1:
+        return parts[0]
+    #if its  co.uk, ac.uk, step back one more
+    sld = parts[-2]
+    if sld in _TLD_LIKE and len(parts) >= 3:
+        sld = parts[-3]
+    return sld
 
 
 # ---------------------------------------------------------------------------
-# File discovery & loading (mirrors analyze_refs.py)
+# File discovery & loading
 # ---------------------------------------------------------------------------
 
 def discover_university_files(in_dir: Path, faculty_name: str) -> dict[str, list[Path]]:
@@ -172,83 +151,51 @@ def load_verified_json(path: Path) -> dict | None:
 
 
 # ---------------------------------------------------------------------------
-# Data extraction
-# ---------------------------------------------------------------------------
-
-def extract_provider_counts(data: dict) -> Counter:
-    counts: Counter = Counter()
-    for link in data.get("links", []):
-        ref = link.get("reference", {})
-        dl = ref.get("download", {}) or {}
-        status = dl.get("status", "other")
-        provider = dl.get("provider")
-        cat = _ref_category(status, provider)
-        counts[cat] += 1
-    return counts
-
-
-def collect_no_doi_domains(data: dict) -> list[str | None]:
-    domains = []
-    for link in data.get("links", []):
-        ref = link.get("reference", {})
-        dl = ref.get("download", {}) or {}
-        if dl.get("status") == "no_doi":
-            raw = ref.get("raw", "")
-            domains.append(_extract_domain(raw))
-    return domains
-
-
-def collect_undownloaded_dois(data: dict) -> list[str | None]:
-    _FAILED_STATUSES = {"download_failed", "not_open_access", "work_not_found", "no_valid_doi"}
-    dois = []
-    for link in data.get("links", []):
-        ref = link.get("reference", {})
-        dl = ref.get("download", {}) or {}
-        if dl.get("status") in _FAILED_STATUSES:
-            doi = ref.get("resolved_doi") or ref.get("doi")
-            dois.append(str(doi).strip() if doi else None)
-    return dois
-
-
-# ---------------------------------------------------------------------------
-# Build per-university data
+# Aggregate data collection
 # ---------------------------------------------------------------------------
 
 def build_data(university_files: dict[str, list[Path]]) -> tuple[
-    dict[str, Counter],   # per-university category counts
-    Counter,              # no-doi domain counts (all universities combined)
-    dict[str, Counter],   # per-university no-doi domain counts
-    list[str | None],     # undownloaded DOIs (all universities)
-    dict[str, int],       # total ref count per university
+    Counter,              # status_counts
+    Counter,              # all_domains
+    int,                  # no_doi_without_url_count
+    list[str | None],     # all_dois
 ]:
-    univ_counts: dict[str, Counter] = {}
+    status_counts: Counter = Counter()
     all_domains: Counter = Counter()
-    univ_domains: dict[str, Counter] = {}
-    all_undownloaded_dois: list[str | None] = []
-    univ_totals: dict[str, int] = {}
+    no_doi_without_url_count = 0
+    all_dois: list[str | None] = []
 
     for univ, paths in university_files.items():
-        uc: Counter = Counter()
-        ud: Counter = Counter()
+        univ_total = 0
+        univ_downloaded = 0
+        univ_no_doi = 0
         for p in paths:
             data = load_verified_json(p)
             if data is None:
                 continue
-            uc.update(extract_provider_counts(data))
-            domains = collect_no_doi_domains(data)
-            for d in domains:
-                key = d if d else "__no_url__"
-                ud[key] += 1
-                all_domains[key] += 1
-            all_undownloaded_dois.extend(collect_undownloaded_dois(data))
+            for link in data.get("links", []):
+                ref = link.get("reference", {})
+                dl = ref.get("download", {}) or {}
+                status = dl.get("status", "other")
+                status_counts[status] += 1
+                univ_total += 1
+                if status in _SUCCESS_STATUSES:
+                    univ_downloaded += 1
+                raw = ref.get("raw", "") or ""
+                if status in _NO_DOI_STATUSES:
+                    univ_no_doi += 1
+                    if not _URL_RE.search(raw):
+                        no_doi_without_url_count += 1
+                    domain = _extract_domain(raw)
+                    if domain:
+                        all_domains[domain] += 1
+                doi = ref.get("resolved_doi") or ref.get("doi")
+                if doi:
+                    all_dois.append(str(doi).strip())
+        print(f"  [{univ}] {univ_total} refs, "
+              f"{univ_downloaded} downloaded, {univ_no_doi} no-DOI")
 
-        univ_counts[univ] = uc
-        univ_domains[univ] = ud
-        univ_totals[univ] = sum(uc.values())
-        print(f"  [{univ}] {sum(uc.values())} refs, "
-              f"{sum(ud.values())} no-doi refs loaded")
-
-    return univ_counts, all_domains, univ_domains, all_undownloaded_dois, univ_totals
+    return status_counts, all_domains, no_doi_without_url_count, all_dois
 
 
 # ---------------------------------------------------------------------------
@@ -267,208 +214,124 @@ def _save(fig: plt.Figure, path: Path, dpi: int, show: bool) -> None:
     plt.close(fig)
 
 
+def _add_bar_footer(fig: plt.Figure, footnote: str) -> None:
+    fig.text(0.5, 0.012, footnote, ha="center", fontsize=8, color="#555555")
+    plt.tight_layout(rect=(0, 0.04, 1, 1))
+
+
 # ---------------------------------------------------------------------------
-# Chart 1: Provider share pie charts (one per university, combined figure)
+# Chart: Undownloaded publisher bar
 # ---------------------------------------------------------------------------
 
-def plot_provider_share_pies(
-    univ_counts: dict[str, Counter],
+def plot_publishers_bar(
+    all_dois: list[str | None],
     out_dir: Path,
     fig_width: float,
     dpi: int,
     show: bool,
+    top_n: int = 15,
 ) -> None:
-    univs = sorted(univ_counts.keys())
-    n = len(univs)
-    if n == 0:
+    pub_counts: Counter = Counter()
+    for doi in all_dois:
+        if doi:
+            pub_counts[_publisher_from_doi(doi)] += 1
+
+    if not pub_counts:
+        print("  [providers] No refs with DOI, skipping publisher bar.")
         return
 
-    ncols = min(n, 3)
-    nrows = math.ceil(n / ncols)
+    total_with_doi = sum(pub_counts.values())
+    top = pub_counts.most_common(top_n)
+    remainder = len(pub_counts) - len(top)
 
-    fig, axes = plt.subplots(nrows, ncols,
-                              figsize=(fig_width, fig_width * nrows / ncols * 0.9 + 1.5))
-    axes_flat: list[plt.Axes] = np.array(axes).flatten().tolist() if n > 1 else [axes]
+    labels = [pub for pub, _ in top]
+    values = [cnt for _, cnt in top]
 
-    present_cats = [c for c in _CATEGORY_ORDER
-                    if any(univ_counts[u].get(c, 0) > 0 for u in univs)]
-    colors = [_CATEGORY_COLORS[c] for c in present_cats]
+    n = len(labels)
+    fig, ax = plt.subplots(figsize=(fig_width, max(3, n * 0.42 + 1.5)))
+    bars = ax.barh(labels[::-1], values[::-1], color=_BAR_BLUE, height=0.65)
+    for bar, val in zip(bars, values[::-1]):
+        pct = val / total_with_doi * 100
+        ax.text(val + total_with_doi * 0.005,
+                bar.get_y() + bar.get_height() / 2,
+                f"{val:,}  ({pct:.1f}%)", va="center", fontsize=12)
 
-    legend_patches = [
-        plt.matplotlib.patches.Patch(color=_CATEGORY_COLORS[c], label=c)
-        for c in present_cats
-    ]
+    ax.set_xlabel("Number of references", fontsize=12)
+    ax.set_title(f"Top {top_n} Publishers by DOI Count", fontsize=13)
+    ax.tick_params(axis="y", labelsize=12)
+    ax.tick_params(axis="x", labelsize=11)
+    ax.set_xlim(0, max(values) * 1.3)
 
-    for i, univ in enumerate(univs):
-        ax = axes_flat[i]
-        counts = univ_counts[univ]
-        total = sum(counts.values())
-        sizes = [counts.get(c, 0) for c in present_cats]
-
-        wedges, texts, autotexts = ax.pie(
-            sizes,
-            labels=None,
-            colors=colors,
-            autopct=lambda p: f"{p:.1f}%" if p >= 3 else "",
-            startangle=90,
-            pctdistance=0.75,
-            wedgeprops={"linewidth": 0.5, "edgecolor": "white"},
-        )
-        for at in autotexts:
-            at.set_fontsize(7)
-
-        ax.set_title(univ, fontsize=10, pad=4)
-        ax.text(0, -1.25, f"n={total:,}", ha="center", fontsize=8, color="#555555")
-
-    # Hide unused axes
-    for j in range(i + 1, len(axes_flat)):
-        axes_flat[j].set_visible(False)
-
-    fig.legend(handles=legend_patches, title="Category",
-               loc="lower center", ncol=min(len(present_cats), 4),
-               bbox_to_anchor=(0.5, 0), fontsize=8, title_fontsize=9)
-    fig.suptitle("Reference Provider Share by University", fontsize=13, y=1.01)
-    plt.tight_layout(rect=[0, 0.12, 1, 1])
-    _save(fig, out_dir / "provider_share_pies.png", dpi, show)
+    footnote = f"{total_with_doi:,} refs with DOI"
+    if remainder > 0:
+        footnote += f"  |  {remainder} further publishers detected"
+    _add_bar_footer(fig, footnote)
+    _save(fig, out_dir / "publishers_bar.png", dpi, show)
 
 
 # ---------------------------------------------------------------------------
-# Chart 2a: No-DOI domain bar — aggregated
+# Chart: No-DOI URL domain bar
 # ---------------------------------------------------------------------------
 
 def plot_no_doi_domains_bar(
     all_domains: Counter,
+    no_doi_without_url_count: int,
     out_dir: Path,
     fig_width: float,
     dpi: int,
     show: bool,
-    top_n: int = 20,
+    top_n: int = 15,
 ) -> None:
     if not all_domains:
         print("  [providers] No no-doi refs found, skipping domain bar.")
         return
 
-    no_url_count = all_domains.pop("__no_url__", 0)
     top = all_domains.most_common(top_n)
-
+    remainder = len(all_domains) - len(top)
     labels = [d for d, _ in top]
     values = [c for _, c in top]
-    if no_url_count:
-        labels.append("(no URL in text)")
-        values.append(no_url_count)
-
-    # Restore key for reuse
-    all_domains["__no_url__"] = no_url_count
 
     n = len(labels)
     fig, ax = plt.subplots(figsize=(fig_width, max(3, n * 0.38 + 1.5)))
-    palette = sns.color_palette("muted", n)
-    bars = ax.barh(labels[::-1], values[::-1], color=palette[::-1], height=0.6)
+    bars = ax.barh(labels[::-1], values[::-1], color=_BAR_BLUE, height=0.6)
     for bar, val in zip(bars, values[::-1]):
         ax.text(val + max(values) * 0.01, bar.get_y() + bar.get_height() / 2,
-                str(val), va="center", fontsize=8)
-    ax.set_xlabel("Number of references")
-    ax.set_title("No-DOI References: Domain Distribution (all universities)")
+                str(val), va="center", fontsize=12)
+    ax.set_xlabel("Number of references", fontsize=12)
+    ax.set_title("Domain Distribution of No-DOI References", fontsize=13)
+    ax.tick_params(axis="y", labelsize=12)
+    ax.tick_params(axis="x", labelsize=11)
     ax.set_xlim(0, max(values) * 1.15)
+
+    footnote = f"{no_doi_without_url_count:,} refs did not contain any URL"
+    if remainder > 0:
+        footnote += f"  |  {remainder} additional domains detected"
+    _add_bar_footer(fig, footnote)
+
     _save(fig, out_dir / "no_doi_domains_bar.png", dpi, show)
 
 
 # ---------------------------------------------------------------------------
-# Chart 2b: No-DOI domain per university — stacked bar
-# ---------------------------------------------------------------------------
-
-def plot_no_doi_domains_per_univ(
-    univ_domains: dict[str, Counter],
-    out_dir: Path,
-    fig_width: float,
-    dpi: int,
-    show: bool,
-    top_n: int = 10,
-) -> None:
-    univs = sorted(univ_domains.keys())
-    if len(univs) < 2:
-        return  # not meaningful with a single university
-
-    # Collect top-N domains across all universities combined (excluding __no_url__)
-    combined: Counter = Counter()
-    for ud in univ_domains.values():
-        for k, v in ud.items():
-            if k != "__no_url__":
-                combined[k] += v
-
-    top_domains = [d for d, _ in combined.most_common(top_n)]
-    palette = sns.color_palette("tab10", len(top_domains) + 1)
-    color_map = {d: palette[i] for i, d in enumerate(top_domains)}
-    color_map["Other / no URL"] = palette[len(top_domains)]
-
-    rows = []
-    for univ in univs:
-        ud = univ_domains[univ]
-        total_no_doi = sum(ud.values())
-        row: dict[str, float] = {}
-        other = 0
-        for d, c in ud.items():
-            if d in top_domains:
-                row[d] = c / total_no_doi * 100 if total_no_doi else 0.0
-            else:
-                other += c
-        row["Other / no URL"] = other / total_no_doi * 100 if total_no_doi else 0.0
-        rows.append(row)
-
-    all_keys = top_domains + ["Other / no URL"]
-    df = pd.DataFrame(rows, index=univs).fillna(0.0)[all_keys]
-
-    n_unis = len(univs)
-    fig, ax = plt.subplots(figsize=(fig_width, max(3, n_unis * 0.6 + 1.5)))
-    left = np.zeros(n_unis)
-    for key in all_keys:
-        vals = df[key].values
-        bars = ax.barh(univs, vals, left=left, color=color_map[key], label=key, height=0.6)
-        for bar, val in zip(bars, vals):
-            if val >= 8:
-                ax.text(bar.get_x() + bar.get_width() / 2,
-                        bar.get_y() + bar.get_height() / 2,
-                        f"{val:.0f}%", ha="center", va="center", fontsize=7, color="white")
-        left += vals
-
-    ax.set_xlim(0, 100)
-    ax.set_xlabel("% of no-DOI references")
-    ax.set_title("No-DOI Reference Domains per University (top 10)")
-    ax.legend(title="Domain", bbox_to_anchor=(1.01, 1), loc="upper left", fontsize=8)
-    ax.invert_yaxis()
-    _save(fig, out_dir / "no_doi_domains_per_univ_bar.png", dpi, show)
-
-
-# ---------------------------------------------------------------------------
-# Chart 3: Download funnel (overall aggregate)
+# Chart: Download funnel
 # ---------------------------------------------------------------------------
 
 def plot_download_funnel(
-    univ_counts: dict[str, Counter],
+    status_counts: Counter,
     out_dir: Path,
     fig_width: float,
     dpi: int,
     show: bool,
 ) -> None:
-    combined: Counter = Counter()
-    for c in univ_counts.values():
-        combined.update(c)
-
-    total = sum(combined.values())
+    total = sum(status_counts.values())
     if total == 0:
         return
 
-    has_doi = total - combined.get("No DOI", 0) - combined.get("Invalid/missing DOI", 0)
-    downloaded = (combined.get("Springer (downloaded)", 0)
-                  + combined.get("IEEE (downloaded)", 0)
-                  + combined.get("Elsevier (downloaded)", 0)
-                  + combined.get("arXiv (downloaded)", 0)
-                  + combined.get("HTTP (downloaded)", 0))
-    abstract_only = combined.get("Abstract only", 0)
+    has_doi = total - sum(status_counts.get(s, 0) for s in _NO_DOI_STATUSES)
+    downloaded = sum(status_counts.get(s, 0) for s in _SUCCESS_STATUSES)
+    abstract_only = status_counts.get("abstract_saved", 0)
 
     stages = ["Total references", "Has DOI", "Full text downloaded", "Abstract obtained"]
     values = [total, has_doi, downloaded, abstract_only]
-
     pcts = [f"{v:,} refs ({v / total * 100:.1f}%)" for v in values]
 
     fig, ax = plt.subplots(figsize=(fig_width * 0.6, 4))
@@ -478,47 +341,23 @@ def plot_download_funnel(
         ax.text(val + total * 0.01, bar.get_y() + bar.get_height() / 2,
                 pct, va="center", fontsize=9)
     ax.set_xlabel("Number of references")
-    ax.set_title("Download Coverage Funnel (all universities)")
+    ax.set_title("Download Coverage Funnel")
     ax.set_xlim(0, total * 1.35)
     _save(fig, out_dir / "download_funnel_bar.png", dpi, show)
 
 
 # ---------------------------------------------------------------------------
-# CSV 1: providers_summary.csv
+# CSV: undownloaded_publishers.csv
 # ---------------------------------------------------------------------------
 
-def write_providers_summary_csv(
-    univ_counts: dict[str, Counter],
-    out_dir: Path,
-) -> None:
-    rows = []
-    for univ in sorted(univ_counts.keys()):
-        c = univ_counts[univ]
-        total = sum(c.values())
-        row: dict = {"university": univ, "total_refs": total}
-        for cat in _CATEGORY_ORDER:
-            key = cat.lower().replace(" ", "_").replace("(", "").replace(")", "").replace("/", "_")
-            row[key] = c.get(cat, 0)
-        rows.append(row)
-
-    df = pd.DataFrame(rows)
-    path = out_dir / "providers_summary.csv"
-    df.to_csv(path, index=False)
-    print(f"  Saved: {path}")
-
-
-# ---------------------------------------------------------------------------
-# CSV 2: undownloaded_publishers.csv
-# ---------------------------------------------------------------------------
-
-def write_undownloaded_publishers_csv(
-    all_undownloaded_dois: list[str | None],
+def write_publishers_csv(
+    all_dois: list[str | None],
     out_dir: Path,
 ) -> None:
     publisher_counts: Counter = Counter()
-    for doi in all_undownloaded_dois:
-        pub = _publisher_from_doi(doi)
-        publisher_counts[pub] += 1
+    for doi in all_dois:
+        if doi:
+            publisher_counts[_publisher_from_doi(doi)] += 1
 
     total = sum(publisher_counts.values())
     rows = []
@@ -526,20 +365,20 @@ def write_undownloaded_publishers_csv(
         rows.append({
             "publisher": pub,
             "count": count,
-            "pct_of_undownloaded": round(count / total * 100, 1) if total else 0.0,
+            "pct_of_with_doi": round(count / total * 100, 1) if total else 0.0,
         })
 
-    path = out_dir / "undownloaded_publishers.csv"
+    path = out_dir / "publishers.csv"
     with open(path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["publisher", "count", "pct_of_undownloaded"])
+        writer = csv.DictWriter(f, fieldnames=["publisher", "count", "pct_of_with_doi"])
         writer.writeheader()
         writer.writerows(rows)
     print(f"  Saved: {path}")
 
     if rows:
-        print("\n  Top undownloaded publishers (implement these APIs to increase coverage):")
+        print("\n  Top publishers:")
         for r in rows[:10]:
-            print(f"    {r['publisher']:<40} {r['count']:>5} refs  ({r['pct_of_undownloaded']:.1f}%)")
+            print(f"    {r['publisher']:<40} {r['count']:>5} refs  ({r['pct_of_with_doi']:.1f}%)")
 
 
 # ---------------------------------------------------------------------------
@@ -570,19 +409,23 @@ def main() -> None:
         sys.exit(f"No JSON files found in {in_dir}")
 
     print(f"[analyze_providers] Loading data from {in_dir} ...")
-    (univ_counts, all_domains, univ_domains,
-     all_undownloaded_dois, univ_totals) = build_data(university_files)
+    status_counts, all_domains, no_doi_without_url_count, all_dois = build_data(university_files)
 
-    if not any(univ_counts.values()):
+    if sum(status_counts.values()) == 0:
         sys.exit("No valid documents loaded.")
 
     print(f"[analyze_providers] Generating outputs -> {out_dir}")
-    plot_provider_share_pies(univ_counts, out_dir, args.fig_width, args.dpi, args.show)
-    plot_no_doi_domains_bar(all_domains, out_dir, args.fig_width, args.dpi, args.show)
-    plot_no_doi_domains_per_univ(univ_domains, out_dir, args.fig_width, args.dpi, args.show)
-    plot_download_funnel(univ_counts, out_dir, args.fig_width, args.dpi, args.show)
-    write_providers_summary_csv(univ_counts, out_dir)
-    write_undownloaded_publishers_csv(all_undownloaded_dois, out_dir)
+    plot_publishers_bar(all_dois, out_dir, args.fig_width, args.dpi, args.show)
+    plot_no_doi_domains_bar(
+        all_domains,
+        no_doi_without_url_count,
+        out_dir,
+        args.fig_width,
+        args.dpi,
+        args.show,
+    )
+    plot_download_funnel(status_counts, out_dir, args.fig_width, args.dpi, args.show)
+    write_publishers_csv(all_dois, out_dir)
 
     print(f"[analyze_providers] Done.")
 

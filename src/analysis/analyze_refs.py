@@ -16,7 +16,6 @@ import seaborn as sns
 DOWNLOAD_STATUS_ORDER = [
     "downloaded",
     "abstract_saved",
-    "already_indexed",
     "download_failed",
     "not_open_access",
     "no_valid_doi",
@@ -26,7 +25,7 @@ DOWNLOAD_STATUS_ORDER = [
     "other",
 ]
 
-REUSE_LABELS = ["1×", "2×", "3×", "4×+"]
+REUSE_LABELS = ["0x", "1x", "2x", "3x", "4x+"]
 
 
 def parse_args() -> argparse.Namespace:
@@ -79,7 +78,7 @@ def extract_doc_metrics(data: dict) -> dict:
     links = data.get("links", [])
 
     # Reuse buckets (by occurrences)
-    reuse = {"1x": 0, "2x": 0, "3x": 0, "4p": 0}
+    reuse = {"0x": 0, "1x": 0, "2x": 0, "3x": 0, "4p": 0}
     # Download statuses
     dl_status = Counter()
     # DOI coverage
@@ -87,19 +86,22 @@ def extract_doc_metrics(data: dict) -> dict:
 
     for link in links:
         occ = link.get("occurrences", 0)
-        if occ > 0:
-            if occ == 1:
-                reuse["1x"] += 1
-            elif occ == 2:
-                reuse["2x"] += 1
-            elif occ == 3:
-                reuse["3x"] += 1
-            else:
-                reuse["4p"] += 1
+        if occ == 0:
+            reuse["0x"] += 1
+        elif occ == 1:
+            reuse["1x"] += 1
+        elif occ == 2:
+            reuse["2x"] += 1
+        elif occ == 3:
+            reuse["3x"] += 1
+        else:
+            reuse["4p"] += 1
 
         ref = link.get("reference", {})
         dl = ref.get("download", {})
         status = dl.get("status", "other") if dl else "other"
+        if status == "already_indexed":
+            status = "downloaded"
         if status not in DOWNLOAD_STATUS_ORDER[:-1]:
             status = "other"
         dl_status[status] += 1
@@ -191,7 +193,7 @@ def plot_refs_distribution_heatmap(
     sns.heatmap(df, annot=True, fmt="d", cmap="YlOrRd", linewidths=0.5,
                 cbar_kws={"label": "Document count"}, ax=ax)
     ax.set_title("Total References Distribution by University")
-    ax.set_xlabel("Reference count (binned)")
+    ax.set_xlabel("Reference count")
     ax.set_ylabel("University")
     ax.tick_params(axis="x", rotation=45)
     _save(fig, out_dir / "refs_distribution_heatmap.png", dpi, show)
@@ -209,8 +211,8 @@ def plot_reuse_stacked_bar(
     show: bool,
 ) -> None:
     univs = sorted(univ_data.keys())
-    keys = ["1x", "2x", "3x", "4p"]
-    palette = sns.color_palette("Blues_d", len(keys))
+    keys = ["0x", "1x", "2x", "3x", "4p"]
+    palette = ["#d62728"] + list(sns.color_palette("Blues_d", len(keys) - 1))
 
     rows = []
     for univ in univs:
@@ -240,7 +242,7 @@ def plot_reuse_stacked_bar(
         left += vals
 
     ax.set_xlim(0, 100)
-    ax.set_xlabel("% of cited references")
+    ax.set_xlabel("% of references")
     ax.set_title("Reference Reuse Distribution by University")
     ax.legend(title="Times cited", bbox_to_anchor=(1.01, 1), loc="upper left")
     ax.invert_yaxis()
@@ -277,7 +279,6 @@ def plot_download_status_stacked_bar(
     status_colors = {
         "downloaded": "#2ca02c",
         "abstract_saved": "#98df8a",
-        "already_indexed": "#1f77b4",
         "download_failed": "#d62728",
         "not_open_access": "#ff7f0e",
         "no_valid_doi": "#ffbb78",
@@ -337,6 +338,7 @@ def plot_refs_citations_scatter(
         return
 
     df = pd.DataFrame(rows)
+    df = df[df["total_citations"] <= 1000]
     univs = sorted(df["University"].unique())
     palette = dict(zip(univs, sns.color_palette("tab10", len(univs))))
 
@@ -419,7 +421,7 @@ def plot_doi_coverage_bar(
     for bar, val, std in zip(bars, means, stds):
         ax.text(val + std + 1.5, bar.get_y() + bar.get_height() / 2,
                 f"{val:.1f}%", va="center", fontsize=9)
-    ax.set_xlabel("% of references with a valid DOI (mean ± std)")
+    ax.set_xlabel("% of references with a valid DOI")
     ax.set_title("DOI Coverage by University")
     ax.set_xlim(0, 110)
     ax.invert_yaxis()

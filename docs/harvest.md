@@ -61,25 +61,19 @@ python -m harvest.cli \
 
 ### Environment variables
 
-| Variable                         | Required                     | Description                                                     |
-|----------------------------------|------------------------------|-----------------------------------------------------------------|
-| `CROSSREF_MAILTO`                | Optional if provided in args | Contact email for Crossref polite pool                          |
-| `ELSEVIER_API_KEY`               | Optional                     | Elsevier Full-Text API                                          |
-| `ELSEVIER_INSTTOKEN`             | Optional                     | Elsevier institutional token                                    |
-| `IEEE_API_KEY`                   | Optional                     | IEEE metadata/search API key                                    |
-| `IEEE_FULL_TEXT_SESSION_TOKEN`   | Optional                     | IEEE chargeable full-text session token if your account uses it |
-| `IEEE_FULL_TEXT_AUTH_TOKEN`      | Optional                     | IEEE long-lived auth token used to request a temporary `cltoken`|
-| `IEEE_FULL_TEXT_AUTH_CODE`       | Optional                     | Backward-compatible alias for `IEEE_FULL_TEXT_AUTH_TOKEN`       |
-| `IEEE_FULL_TEXT_AUTH_CODE_PARAM` | Optional                     | IEEE auth-token query param, default `cltoken`                  |
-| `IEEE_FULL_TEXT_FORMAT`          | Optional                     | Full-text response format, default `xml`                        |
-| `SPRINGER_FULLTEXT_API_KEY`      | Optional                     | Springer full-text API key                                      |
-| `SPRINGER_FULLTEXT_URL_TEMPLATE` | Optional                     | DOI-based Springer full-text endpoint from your contract docs   |
-| `SPRINGER_FULLTEXT_API_KEY_PARAM` | Optional                     | Query parameter name for the Springer key, default `api_key`    |
-| `SPRINGER_FULLTEXT_API_KEY_HEADER`| Optional                     | Header name for the Springer key if your endpoint expects one   |
+| Variable                          | Required                     | Description                                                   |
+|-----------------------------------|------------------------------|---------------------------------------------------------------|
+| `CROSSREF_MAILTO`                 | Optional if provided in args | Contact email for Crossref polite pool                        |
+| `ELSEVIER_API_KEY`                | Optional                     | Elsevier Full-Text API key                                    |
+| `ELSEVIER_INSTTOKEN`              | Optional                     | Elsevier institutional token                                  |
+| `IEEE_API_KEY`                    | Optional                     | IEEE metadata/search API key                                  |
+| `IEEE_AUTH_TOKEN`                 | Optional                     | Long-lived auth token for IEEE full-text access               |
+| `IEEE_FULL_TEXT_FORMAT`           | Optional                     | Full-text response format, default `xml`                      |
+| `SPRINGER_TDM_API_KEY`            | Optional                     | Springer TDM API key (primary)                                |
+| `SPRINGER_TDM_METRIC`             | Optional                     | Springer TDM metric identifier, e.g. `stuba-api`              |
 
 Notes:
-- IEEE full-text access is a different flow from the old metadata-only branch: the harvester resolves the DOI to article metadata, exchanges your auth token for a temporary `cltoken`, then requests full text by article number.
-- Springer is no longer wired to the legacy OA/meta APIs in this branch. The full-text endpoint shape is injected through `SPRINGER_FULLTEXT_URL_TEMPLATE` so it can match the endpoint format in your Springer account documentation.
+- IEEE full-text access: the harvester resolves the DOI to article metadata, exchanges `IEEE_AUTH_TOKEN` for a temporary `cltoken`, then requests full text by article number.
 
 ## Dependencies
 

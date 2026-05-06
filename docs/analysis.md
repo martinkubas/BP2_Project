@@ -4,7 +4,7 @@ Post-processing scripts that read `verified_json/` output and produce statistics
 
 ## What it does
 
-Two independent scripts cover different aspects of the data. They can be run together via `analyze.py` (parallel execution) or individually.
+Three independent scripts cover different aspects of the data. They can be run together via `analyze.py` or individually.
 
 ---
 
@@ -66,6 +66,21 @@ Reads per-citation verification results and produces plots about similarity scor
 
 ---
 
+### analyze_providers.py — Publisher and download funnel statistics
+
+Aggregates publisher distribution, no-DOI domain breakdown, and a download funnel across all processed documents.
+
+**Plots and files produced:**
+
+| File                       | Description                                                            |
+|----------------------------|------------------------------------------------------------------------|
+| `publishers_bar.png`       | Top 15 publishers by DOI count               |
+| `no_doi_domains_bar.png`   | Top 15 domains found in references that have no DOI                    |
+| `download_funnel_bar.png`  | 4-stage funnel: Total refs → Has DOI → Downloaded → Abstract           |
+| `publishers.csv`           | Publisher name, reference count, and percentage of DOI-bearing refs    |
+
+---
+
 ## Inputs
 
 ```
@@ -89,28 +104,36 @@ out/analysis/
 ├── refs/
 │   ├── *.png
 │   └── refs_summary.csv
-└── similarity/
+├── similarity/
+│   ├── *.png
+│   └── similarity_summary.csv
+└── providers/
     ├── *.png
-    └── similarity_summary.csv
+    └── publishers.csv
 ```
 
 ## CLI
 
 ```bash
-# Both scripts in parallel
-python scripts/analysis/analyze.py \
+# All three scripts in parallel
+python src/analysis/analyze.py \
   --in-dir out/verified_json \
   --out-dir out/analysis
 
 # Reference statistics only
-python scripts/analysis/analyze_refs.py \
+python src/analysis/analyze_refs.py \
   --in-dir out/verified_json \
   --out-dir out/analysis/refs
 
 # Similarity statistics only
-python scripts/analysis/analyze_similarity.py \
+python src/analysis/analyze_similarity.py \
   --in-dir out/verified_json \
   --out-dir out/analysis/similarity
+
+# Publisher and download funnel only
+python src/analysis/analyze_providers.py \
+  --in-dir out/verified_json \
+  --out-dir out/analysis/providers
 ```
 
 ### Shared flags
@@ -122,7 +145,7 @@ python scripts/analysis/analyze_similarity.py \
 | `--fig-width`      | `12`       | Base figure width in inches                               |
 | `--support-thresh` | `0.62`     | Threshold line for *supported* in similarity plots        |
 | `--related-thresh` | `0.42`     | Threshold line for *related* in similarity plots          |
-| `--faculty-name`   | `"default` | Name for university in case no subdirectories are present |
+| `--faculty-name`   | `""`       | Name for university in case no subdirectories are present |
 
 ## Dependencies
 

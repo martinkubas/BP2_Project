@@ -16,6 +16,14 @@ import time
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
 
+
+def _safe_relpath(path: str, start: str) -> str:
+    """Return a relative path, or absolute path if the two are on different drives."""
+    try:
+        return os.path.relpath(path, start)
+    except ValueError:
+        return path
+
 import requests
 
 from .arxiv import (
@@ -41,6 +49,7 @@ from .providers import (
     download_springer_pdf,
     elsevier_abstract,
     save_abstract,
+    springer_abstract_from_jats,
 )
 from .utils import (
     DownloadConfig,
@@ -190,6 +199,21 @@ def fetch_abstract_fallback(
             config.connect_timeout, config.read_timeout,
         )
 
+    if provider == "springer":
+        from .providers import _springer_request_spec
+        spec = _springer_request_spec(doi)
+        if spec:
+            url, headers, params = spec
+            try:
+                resp = session.get(url, params=params, headers=headers,
+                                   timeout=(config.connect_timeout, config.read_timeout))
+                if resp.status_code < 400:
+                    abstract = springer_abstract_from_jats(resp.text)
+                    if abstract:
+                        return abstract
+            except Exception:
+                pass
+
     return ""
 
 
@@ -263,129 +287,145 @@ def process_reference(
     bump_both(stats, work_stats, "doi_found")
     log(f"    DOI={doi} (source={doi_source})")
 
-    # ---- 2: Milvus skip-check ------------------------------------------
     try:
-        if milvus_is_indexed(doi):
-            log("    [Milvus] already indexed — skipping download")
+        # ---- 2: Milvus skip-check ------------------------------------------
+        try:
+            if milvus_is_indexed(doi):
+                log("    [Milvus] already indexed — skipping download")
+                set_download_info(
+                    reference,
+                    status="already_indexed",
+                    pdf_path=None,
+                    abstract_path=None,
+                    final_url=str((crossref_meta or {}).get("URL") or f"https://doi.org/{doi}"),
+                    method="milvus_cache",
+                    provider=provider or detect_provider(doi, crossref_meta) or "unknown",
+                    error=None,
+                )
+                bump_both(stats, work_stats, "already_indexed")
+                return
+        except Exception as milvus_error:
+            log(f"    [Milvus] check failed ({milvus_error!r}), proceeding with download")
+
+        if config.sleep_between_calls > 0:
+            time.sleep(config.sleep_between_calls)
+
+        if provider is None:
+            provider = detect_provider(doi, crossref_meta)
+
+        out_pdf = config.pdf_dir / (safe_filename(doi) + ".pdf")
+
+        # ---- 3: On-disk existence check ------------------------------------
+        if out_pdf.exists() and not config.overwrite:
+            log(f"    [Skip] exists on disk: {out_pdf.name}")
             set_download_info(
                 reference,
-                status="already_indexed",
-                pdf_path=None,
-                abstract_path=None,
-                final_url=str((crossref_meta or {}).get("URL") or f"https://doi.org/{doi}"),
-                method="milvus_cache",
-                provider=provider or detect_provider(doi, crossref_meta) or "unknown",
+                status="downloaded",
+                pdf_path=_safe_relpath(str(out_pdf), str(config.output_dir)),
+                method="exists",
+                provider=None,
+            )
+            bump_both(stats, work_stats, "pdf_ok")
+            return
+
+        # ---- 4: Provider-specific download ---------------------------------
+        pdf_ok, final_url, download_error = attempt_provider_download(
+            session, config, doi, provider, arxiv_id,
+            reference_raw, out_pdf,
+        )
+
+        if pdf_ok:
+            stat_key = _PROVIDER_STAT_KEY.get(provider or "")
+            if stat_key:
+                stats["by_provider_pdf_ok"][stat_key] += 1
+            set_download_info(
+                reference,
+                status="downloaded",
+                pdf_path=_safe_relpath(str(out_pdf), str(config.output_dir)),
+                final_url=final_url,
+                method=f"provider:{provider}",
+                provider=provider,
                 error=None,
             )
-            bump_both(stats, work_stats, "already_indexed")
+            bump_both(stats, work_stats, "pdf_ok")
             return
-    except Exception as milvus_error:
-        log(f"    [Milvus] check failed ({milvus_error!r}), proceeding with download")
 
-    if config.sleep_between_calls > 0:
-        time.sleep(config.sleep_between_calls)
+        if provider:
+            stat_key = _PROVIDER_STAT_KEY.get(provider or "")
+            if stat_key:
+                stats["by_provider_pdf_fail"][stat_key] += 1
+            log(f"    [Provider] failed: {download_error}")
 
-    if provider is None:
-        provider = detect_provider(doi, crossref_meta)
-
-    out_pdf = config.pdf_dir / (safe_filename(doi) + ".pdf")
-
-    # ---- 3: On-disk existence check ------------------------------------
-    if out_pdf.exists() and not config.overwrite:
-        log(f"    [Skip] exists on disk: {out_pdf.name}")
-        set_download_info(
-            reference,
-            status="downloaded",
-            pdf_path=os.path.relpath(str(out_pdf), str(config.output_dir)),
-            method="exists",
-            provider=None,
+        # ---- 5: HTTP fallback ----------------------------------------------
+        pdf_ok, final_url, download_error = attempt_http_fallback(
+            session, config, doi, crossref_meta or {}, out_pdf,
         )
-        bump_both(stats, work_stats, "pdf_ok")
-        return
 
-    # ---- 4: Provider-specific download ---------------------------------
-    pdf_ok, final_url, download_error = attempt_provider_download(
-        session, config, doi, provider, arxiv_id,
-        reference_raw, out_pdf,
-    )
+        if pdf_ok:
+            stats["by_provider_pdf_ok"]["http"] += 1
+            set_download_info(
+                reference,
+                status="downloaded",
+                pdf_path=_safe_relpath(str(out_pdf), str(config.output_dir)),
+                final_url=final_url,
+                method="http",
+                provider="http",
+                error=None,
+            )
+            bump_both(stats, work_stats, "pdf_ok")
+            log("    [OK] downloaded via HTTP fallback")
+            return
 
-    if pdf_ok:
-        stat_key = _PROVIDER_STAT_KEY.get(provider or "")
-        if stat_key:
-            stats["by_provider_pdf_ok"][stat_key] += 1
-        set_download_info(
-            reference,
-            status="downloaded",
-            pdf_path=os.path.relpath(str(out_pdf), str(config.output_dir)),
-            final_url=final_url,
-            method=f"provider:{provider}",
-            provider=provider,
-            error=None,
+        stats["by_provider_pdf_fail"]["http"] += 1
+
+        # ---- 6: Abstract fallback ------------------------------------------
+        bump_both(stats, work_stats, "pdf_fail")
+        log(f"    [FAIL] PDF download failed: {download_error}")
+        log("    [Abstract] trying ...")
+
+        abstract_text = fetch_abstract_fallback(
+            session, config, doi, provider, crossref_meta,
         )
-        bump_both(stats, work_stats, "pdf_ok")
-        return
+        abstract_path = save_abstract(config.abstract_dir, doi, abstract_text)
 
-    if provider:
-        stat_key = _PROVIDER_STAT_KEY.get(provider or "")
-        if stat_key:
-            stats["by_provider_pdf_fail"][stat_key] += 1
-        log(f"    [Provider] failed: {download_error}")
+        if abstract_path:
+            set_download_info(
+                reference,
+                status="abstract_saved",
+                abstract_path=_safe_relpath(abstract_path, str(config.output_dir)),
+                pdf_path=None,
+                final_url=final_url,
+                method="abstract",
+                provider=provider or "unknown",
+                error=None,
+            )
+            bump_both(stats, work_stats, "abstract_ok")
+            log(f"    [OK] abstract saved → {abstract_path}")
+        else:
+            set_download_info(
+                reference,
+                status="download_failed",
+                pdf_path=None,
+                abstract_path=None,
+                final_url=final_url,
+                method="failed",
+                provider=provider or "http",
+                error=download_error,
+            )
+            bump_both(stats, work_stats, "abstract_fail")
+            log("    [FAIL] no abstract available either")
 
-    # ---- 5: HTTP fallback ----------------------------------------------
-    pdf_ok, final_url, download_error = attempt_http_fallback(
-        session, config, doi, crossref_meta or {}, out_pdf,
-    )
-
-    if pdf_ok:
-        stats["by_provider_pdf_ok"]["http"] += 1
-        set_download_info(
-            reference,
-            status="downloaded",
-            pdf_path=os.path.relpath(str(out_pdf), str(config.output_dir)),
-            final_url=final_url,
-            method="http",
-            provider="http",
-            error=None,
-        )
-        bump_both(stats, work_stats, "pdf_ok")
-        log("    [OK] downloaded via HTTP fallback")
-        return
-
-    stats["by_provider_pdf_fail"]["http"] += 1
-
-    # ---- 6: Abstract fallback ------------------------------------------
-    bump_both(stats, work_stats, "pdf_fail")
-    log(f"    [FAIL] PDF download failed: {download_error}")
-    log("    [Abstract] trying ...")
-
-    abstract_text = fetch_abstract_fallback(
-        session, config, doi, provider, crossref_meta,
-    )
-    abstract_path = save_abstract(config.abstract_dir, doi, abstract_text)
-
-    if abstract_path:
-        set_download_info(
-            reference,
-            status="abstract_saved",
-            abstract_path=os.path.relpath(abstract_path, str(config.output_dir)),
-            pdf_path=None,
-            final_url=final_url,
-            method="abstract",
-            provider=provider or "unknown",
-            error=None,
-        )
-        bump_both(stats, work_stats, "abstract_ok")
-        log(f"    [OK] abstract saved → {abstract_path}")
-    else:
-        set_download_info(
-            reference,
-            status="download_failed",
-            pdf_path=None,
-            abstract_path=None,
-            final_url=final_url,
-            method="failed",
-            provider=provider or "http",
-            error=download_error,
-        )
-        bump_both(stats, work_stats, "abstract_fail")
-        log("    [FAIL] no abstract available either")
+    except Exception as exc:
+        if "download" not in reference:
+            set_download_info(
+                reference,
+                status="download_failed",
+                pdf_path=None,
+                abstract_path=None,
+                final_url=None,
+                method="failed",
+                provider=provider or "unknown",
+                error=repr(exc),
+            )
+            bump_both(stats, work_stats, "abstract_fail")
+        raise

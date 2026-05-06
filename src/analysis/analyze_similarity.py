@@ -165,7 +165,7 @@ def plot_similarity_density_heatmap(
     sns.heatmap(matrix, cmap="viridis", linewidths=0.3, annot=(n_unis <= 10),
                 fmt="d", cbar_kws={"label": "Citation count"}, ax=ax)
     ax.set_title("Similarity Score Distribution by University")
-    ax.set_xlabel("Best cosine similarity (binned)")
+    ax.set_xlabel("Best cosine similarity")
     ax.set_ylabel("University")
     ax.tick_params(axis="x", rotation=60)
     _save(fig, out_dir / "similarity_density_heatmap.png", dpi, show)
@@ -402,7 +402,7 @@ def plot_sim_vs_frequency_scatter(
         ax.plot(x_line, m * x_line + b, "k--", linewidth=1.5, alpha=0.6,
                 label=f"Trend (slope={m:.4f})")
 
-    ax.set_xlabel("Reference occurrence count (times cited)")
+    ax.set_xlabel("Reference occurrence count")
     ax.set_ylabel("Mean best cosine similarity")
     ax.set_ylim(0, 1)
     ax.set_title("Similarity vs Citation Frequency per Reference")
