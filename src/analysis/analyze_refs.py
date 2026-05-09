@@ -77,7 +77,7 @@ def extract_doc_metrics(data: dict) -> dict:
 
     links = data.get("links", [])
 
-    # Reuse buckets (by occurrences)
+    # Reuse buckets
     reuse = {"0x": 0, "1x": 0, "2x": 0, "3x": 0, "4p": 0}
     # Download statuses
     dl_status = Counter()

@@ -49,13 +49,15 @@ class MilvusSegmentStore:
         milvus_uri: str,
         model_slug: str,
         embedding_dim: int,
+        alias: str = "default",
     ) -> None:
         # Milvus collection names may only contain alphanumerics and underscores.
         safe_model_slug = slugify(model_slug).replace("-", "_").replace(".", "_")
         self.collection_name = f"segments_{safe_model_slug}"[:255]
         self.embedding_dim = embedding_dim
+        self._alias = alias
 
-        connections.connect(alias="default", uri=milvus_uri)
+        connections.connect(alias=self._alias, uri=milvus_uri)
         self._collection: Collection = self._get_or_create_collection()
 
     def has_source(self, source_key: str) -> bool:
@@ -130,38 +132,28 @@ class MilvusSegmentStore:
         return hits
 
     def close(self) -> None:
-        connections.disconnect("default")
+        try:
+            self._collection.release()
+        except Exception:
+            pass
+        connections.disconnect(self._alias)
 
     @staticmethod
     def source_exists(milvus_uri: str, model_slug: str, source_key: str) -> bool:
-        safe_model_slug = slugify(model_slug).replace("-", "_").replace(".", "_")
-        collection_name = f"segments_{safe_model_slug}"[:255]
-
-        # Use a separate alias so this doesn't interfere with an existing connection.
-        alias = "existence_check"
-        connections.connect(alias=alias, uri=milvus_uri)
+        checker = MilvusSourceChecker(milvus_uri, model_slug)
         try:
-            if not utility.has_collection(collection_name, using=alias):
-                return False
-            check_collection = Collection(collection_name, using=alias)
-            check_collection.load()
-            results = check_collection.query(
-                expr=f'source_key == "{source_key}"',
-                output_fields=["source_key"],
-                limit=1,
-            )
-            return len(results) > 0
+            return checker.has_source(source_key)
         finally:
-            connections.disconnect(alias)
+            checker.close()
 
     def _get_or_create_collection(self) -> Collection:
-        if utility.has_collection(self.collection_name):
-            existing_collection = Collection(self.collection_name)
+        if utility.has_collection(self.collection_name, using=self._alias):
+            existing_collection = Collection(self.collection_name, using=self._alias)
             existing_collection.load()
             return existing_collection
 
         schema = self._build_collection_schema()
-        new_collection = Collection(name=self.collection_name, schema=schema)
+        new_collection = Collection(name=self.collection_name, schema=schema, using=self._alias)
         new_collection.create_index(
             field_name="embedding",
             index_params={
@@ -193,3 +185,40 @@ class MilvusSegmentStore:
             fields=fields,
             description="Citation verification segments indexed by reference document DOI",
         )
+
+
+class MilvusSourceChecker:
+
+    def __init__(
+        self,
+        milvus_uri: str,
+        model_slug: str,
+        alias: str = "existence_check",
+    ) -> None:
+        safe_model_slug = slugify(model_slug).replace("-", "_").replace(".", "_")
+        self.collection_name = f"segments_{safe_model_slug}"[:255]
+        self._alias = alias
+
+        connections.connect(alias=self._alias, uri=milvus_uri)
+        self._collection: Collection | None = None
+        if utility.has_collection(self.collection_name, using=self._alias):
+            self._collection = Collection(self.collection_name, using=self._alias)
+            self._collection.load()
+
+    def has_source(self, source_key: str) -> bool:
+        if self._collection is None:
+            return False
+        existing_rows = self._collection.query(
+            expr=f'source_key == "{source_key}"',
+            output_fields=["source_key"],
+            limit=1,
+        )
+        return len(existing_rows) > 0
+
+    def close(self) -> None:
+        try:
+            if self._collection is not None:
+                self._collection.release()
+        except Exception:
+            pass
+        connections.disconnect(self._alias)

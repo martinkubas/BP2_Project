@@ -18,7 +18,7 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--fig-width", type=float, default=12)
     ap.add_argument("--support-thresh", type=float, default=0.62)
     ap.add_argument("--related-thresh", type=float, default=0.42)
-    ap.add_argument("--faculty-name", default="default", help="Label to use instead of 'default' when in-dir has no subdirectories")
+    ap.add_argument("--faculty-name", default="", help="Label to use instead of 'default' when in-dir has no subdirectories")
     return ap.parse_args()
 
 

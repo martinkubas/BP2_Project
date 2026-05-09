@@ -240,14 +240,18 @@ def build_milvus_checker(
     if not (milvus_uri.strip() and embed_model.strip()):
         return lambda _doi: False
 
-    from verification.milvus_store import MilvusSegmentStore
+    from verification.milvus_store import MilvusSourceChecker
     from commons.text import slugify
 
     model_slug = embed_model.strip()
     uri = milvus_uri.strip()
     log(f"[Milvus] cache check enabled — URI={uri} model={model_slug}")
 
+    checker = MilvusSourceChecker(uri, model_slug, alias="harvest_check")
+
     def check_milvus(doi: str) -> bool:
-        return MilvusSegmentStore.source_exists(uri, model_slug, slugify(doi))
+        return checker.has_source(slugify(doi))
+
+    setattr(check_milvus, "close", checker.close)
 
     return check_milvus

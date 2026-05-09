@@ -7,6 +7,7 @@ services:
       - "8071:8071"
     init: true
     restart: unless-stopped
+    mem_limit: 10g
     environment:
       - JAVA_OPTS=-Xms2g -Xmx8g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Dgrobid.nb_threads=4
     ulimits:
@@ -61,6 +62,8 @@ services:
   milvus:
     image: milvusdb/milvus:v2.6.13
     command: ["milvus", "run", "standalone"]
+    restart: unless-stopped
+    mem_limit: 16g
     ports:
       - "19530:19530"
       - "9091:9091"

@@ -1,0 +1,49 @@
+{
+  "totals": {
+    "works": 2,
+    "references": 69,
+    "doi_found": 56,
+    "no_doi": 13,
+    "pdf_ok": 3,
+    "pdf_fail": 7,
+    "abstract_ok": 1,
+    "abstract_fail": 6,
+    "by_provider_pdf_ok": {
+      "arxiv": 0,
+      "elsevier": 0,
+      "springer": 0,
+      "ieee": 0,
+      "http": 1
+    },
+    "by_provider_pdf_fail": {
+      "arxiv": 0,
+      "elsevier": 0,
+      "springer": 0,
+      "ieee": 3,
+      "http": 7
+    },
+    "already_indexed": 46
+  },
+  "per_work": {
+    "BP2_Kubis.json": {
+      "references": 42,
+      "doi_found": 34,
+      "no_doi": 8,
+      "pdf_ok": 1,
+      "pdf_fail": 4,
+      "abstract_ok": 0,
+      "abstract_fail": 4,
+      "already_indexed": 29
+    },
+    "BP2_Kubis_Article.json": {
+      "references": 27,
+      "doi_found": 22,
+      "no_doi": 5,
+      "pdf_ok": 2,
+      "pdf_fail": 3,
+      "abstract_ok": 1,
+      "abstract_fail": 2,
+      "already_indexed": 17
+    }
+  }
+}

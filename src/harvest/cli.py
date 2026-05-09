@@ -126,6 +126,9 @@ def run(
     log("")
     log("[All done]")
     log(f"Stats: {stats_path}")
+    close_milvus_checker = getattr(milvus_is_indexed, "close", None)
+    if callable(close_milvus_checker):
+        close_milvus_checker()
     return 0
 
 

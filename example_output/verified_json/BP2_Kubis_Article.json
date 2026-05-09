@@ -1,0 +1,2442 @@
+{
+  "summary": {
+    "total_references": 27,
+    "references_cited": 27,
+    "total_citations": 42,
+    "unmatched_citation_entries": 0
+  },
+  "links": [
+    {
+      "index": 1,
+      "reference": {
+        "raw": "[1] S. A. Mogull, “Accuracy of cited “facts” in medical research articles: A review of study methodology and recalculation of quotation error rate,” PLOS ONE, vol. 12, no. 9, pp. 1–17, 09 2017. [Online]. Available: https://doi.org/10.1371/journal.pone.0184727",
+        "doi": "10.1371/journal.pone.0184727",
+        "resolved_doi": "10.1371/journal.pone.0184727",
+        "crossref_title": "Accuracy of cited “facts” in medical research articles: A review of study methodology and recalculation of quotation error rate",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1371/journal.pone.0184727",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+        "That distinction matters because a citation can be formally correct and still be inaccurate, incomplete, or misleading [1] [2].",
+        "Mogull [1] separates minor citation inaccuracies from major content errors, where the cited source fails to substantiate or even contradicts the assertion."
+      ],
+      "occurrences": 3,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+            "label": "supported",
+            "best_sim": 0.7680225968360901,
+            "best_zone": "body",
+            "source_hint": "body",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.7680225968360901,
+            "top_matches": [
+              {
+                "sim": 0.7680225968360901,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Introduction",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "The primary sources cited may be misquoted, inapplicable, unreliable and occasionally even imaginary."
+              },
+              {
+                "sim": 0.691595196723938,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Discussion",
+                "para_i": 4,
+                "sent_i": 5,
+                "text": "Often, a reference listed in the work-cited list may be cited multiple times within an article and also might correspond to several different assertions (e.g., one study [26] mentioned an extreme case in which a single reference was associated with 13 in-text quotations)."
+              },
+              {
+                "sim": 0.6878411769866943,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Discussion",
+                "para_i": 4,
+                "sent_i": 6,
+                "text": "Alternatively, a reference may be inadvertently included in the work-cited list but not quoted in the text (as mentioned in the same study [26])."
+              },
+              {
+                "sim": 0.632664144039154,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Yes",
+                "para_i": 10,
+                "sent_i": 3,
+                "text": "In some cases, inclusion of inappropriate citations might be due to citation manipulation in which the authors intend to increase citation counts of unrelated articles. [26,28]"
+              },
+              {
+                "sim": 0.5842914581298828,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Assigning consistent definitions and criteria for quotation errors",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "Although source errors are procedurally improper, the quotations were not evaluated for informational or content accuracy and thus may not represent a \"factual\" inaccuracy."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "That distinction matters because a citation can be formally correct and still be inaccurate, incomplete, or misleading [1] [2].",
+            "label": "supported",
+            "best_sim": 0.6282979249954224,
+            "best_zone": "abstract",
+            "source_hint": "unclear",
+            "best_abstract_sim": 0.6282979249954224,
+            "best_body_sim": 0.6066784858703613,
+            "top_matches": [
+              {
+                "sim": 0.6282979249954224,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 11,
+                "text": "Additionally, improper secondary (or indirect) citations, which are distinguished from calculations of quotation accuracy, occur at a rate of 10.4% (3.4% to 17.5% at a 95% confidence interval)."
+              },
+              {
+                "sim": 0.6066784858703613,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Yes",
+                "para_i": 11,
+                "sent_i": 1,
+                "text": "Although secondary citation is procedurally improper, this measure does not provide any insight into the integrity of the information cited since the authors of the original studies did not trace the statements further and analyze for accuracy."
+              },
+              {
+                "sim": 0.5961569547653198,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Assigning consistent definitions and criteria for quotation errors",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "Although source errors are procedurally improper, the quotations were not evaluated for informational or content accuracy and thus may not represent a \"factual\" inaccuracy."
+              },
+              {
+                "sim": 0.5757413506507874,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Assigning consistent definitions and criteria for quotation errors",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "First, I defined \"content errors\" as an informative or \"factual\" inaccuracies and distinguished these errors from \"source errors,\" which are secondary (or indirect) citations."
+              },
+              {
+                "sim": 0.5698992013931274,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Yes",
+                "para_i": 11,
+                "sent_i": -1,
+                "text": "In the studies reporting source errors, the rate of improper secondary (indirect) citations was 10.4%, which was similarly adjusted as a percent rather than the weighted metric of improper secondary citations to references selected in the work-cited list. Although secondary citation is procedurally improper, this measure does not provide any insight into the integrity of the information cited since the authors of the original studies did not trace the statements further and analyze for accuracy."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "Mogull [1] separates minor citation inaccuracies from major content errors, where the cited source fails to substantiate or even contradicts the assertion.",
+            "label": "supported",
+            "best_sim": 0.7333621382713318,
+            "best_zone": "body",
+            "source_hint": "body",
+            "best_abstract_sim": 0.6768014430999756,
+            "best_body_sim": 0.7333621382713318,
+            "top_matches": [
+              {
+                "sim": 0.7333621382713318,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Discussion",
+                "para_i": 2,
+                "sent_i": 0,
+                "text": "g Includes secondary citations as minor content errors (the number of secondary citations was unable to be distinguished from the minor content errors)."
+              },
+              {
+                "sim": 0.6832742094993591,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Assigning consistent definitions and criteria for quotation errors",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "First, I defined \"content errors\" as an informative or \"factual\" inaccuracies and distinguished these errors from \"source errors,\" which are secondary (or indirect) citations."
+              },
+              {
+                "sim": 0.6768014430999756,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 9,
+                "text": "These content errors are predominantly, 64.8% (56.1% to 73.5% at a 95% confidence interval), major errors or cited assertions in which the referenced source either fails to substantiate, is unrelated to, or contradicts the assertion."
+              },
+              {
+                "sim": 0.6752736568450928,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Assigning consistent definitions and criteria for quotation errors",
+                "para_i": 1,
+                "sent_i": -1,
+                "text": "Second, I applied consistent criteria for subcategorizing content errors into major and minor errors. The criteria for major and minor errors is more standardized throughout the original studies, although some minor differences existed. (The most notable difference in the criteria is that source errors are considered minor errors in approximately half of the studies.) As summarized in Table 2, a major content error was a cited assertion in which the referenced source either failed to substantiat"
+              },
+              {
+                "sim": 0.6520930528640747,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 7,
+                "text": "Content errors were further subdivided into major and minor errors depending on the degree that the assertion differed from the original source."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1371/journal.pone.0184727",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 2,
+      "reference": {
+        "raw": "[2] V. Pavlovic, T. Weissgerber, D. Stanisavljevic, T. Pekmezovic, O. Milicevic, J. M. Lazovic, A. Cirkovic, M. Savic, N. Rajovic, P. Piperac, N. Djuric, P. Madzarevic, A. Dimitrijevic, S. Randjelovic, E. Nestorovic, R. Akinyombo, A. Pavlovic, R. Ghamrawi, V. Garovic, and N. Milic, “How accurate are citations of frequently cited papers in biomedical literature?” Clin Sci (Lond), vol. 135, no. 5, pp. 671–681, mar 2021.",
+        "doi": null,
+        "resolved_doi": "10.1042/cs20201573",
+        "crossref_title": "How accurate are citations of frequently cited papers in biomedical literature?",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\nihms-1690179.pdf",
+          "final_url": "https://portlandpress.com/clinsci/article/135/5/671/227884/How-accurate-are-citations-of-frequently-cited",
+          "method": "http",
+          "provider": "http"
+        }
+      },
+      "sentences": [
+        "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+        "That distinction matters because a citation can be formally correct and still be inaccurate, incomplete, or misleading [1] [2].",
+        "[2] show that such claim-support failures also occur in real published literature."
+      ],
+      "occurrences": 3,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+            "label": "related",
+            "best_sim": 0.6094415187835693,
+            "best_zone": "abstract",
+            "source_hint": "weak_abstract",
+            "best_abstract_sim": 0.6094415187835693,
+            "best_body_sim": null,
+            "top_matches": [
+              {
+                "sim": 0.6094415187835693,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 7,
+                "text": "A citation was defined as being accurate if the cited article supported or was in accordance with the statement by citing authors."
+              },
+              {
+                "sim": 0.5476240515708923,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 8,
+                "text": "At least one inaccurate citation was found in 11 and 15% of articles in the feasibility study and verification set, respectively, suggesting that inaccurate citations are common in biomedical literature."
+              },
+              {
+                "sim": 0.49400001764297485,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 10,
+                "text": "-fifth of inaccurate citations were due to chains of inaccurate citations."
+              },
+              {
+                "sim": 0.4510311484336853,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "The purpose of the present study was to examine how often frequently cited papers in biomedical scientific literature are cited inaccurately."
+              },
+              {
+                "sim": 0.45040902495384216,
+                "zone": "abstract",
+                "level": "paragraph",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "Abstract Citations are an important, but often overlooked, part of every scientific paper. They allow the reader to trace the flow of evidence, serving as a gateway to relevant literature. Most scientists are aware of citations’ errors, but few appreciate the prevalence of these problems. The purpose of the present study was to examine how often frequently cited papers in biomedical scientific literature are cited inaccurately. The study included an active participation of the first authors of i"
+              }
+            ]
+          },
+          {
+            "citing_sentence": "That distinction matters because a citation can be formally correct and still be inaccurate, incomplete, or misleading [1] [2].",
+            "label": "related",
+            "best_sim": 0.556299090385437,
+            "best_zone": "abstract",
+            "source_hint": "weak_abstract",
+            "best_abstract_sim": 0.556299090385437,
+            "best_body_sim": null,
+            "top_matches": [
+              {
+                "sim": 0.556299090385437,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 10,
+                "text": "-fifth of inaccurate citations were due to chains of inaccurate citations."
+              },
+              {
+                "sim": 0.5075895190238953,
+                "zone": "abstract",
+                "level": "paragraph",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "Abstract Citations are an important, but often overlooked, part of every scientific paper. They allow the reader to trace the flow of evidence, serving as a gateway to relevant literature. Most scientists are aware of citations’ errors, but few appreciate the prevalence of these problems. The purpose of the present study was to examine how often frequently cited papers in biomedical scientific literature are cited inaccurately. The study included an active participation of the first authors of i"
+              },
+              {
+                "sim": 0.505370020866394,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 8,
+                "text": "At least one inaccurate citation was found in 11 and 15% of articles in the feasibility study and verification set, respectively, suggesting that inaccurate citations are common in biomedical literature."
+              },
+              {
+                "sim": 0.5032330751419067,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 7,
+                "text": "A citation was defined as being accurate if the cited article supported or was in accordance with the statement by citing authors."
+              },
+              {
+                "sim": 0.4890096187591553,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "Most scientists are aware of citations’ errors, but few appreciate the prevalence of these problems."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "[2] show that such claim-support failures also occur in real published literature.",
+            "label": "related",
+            "best_sim": 0.47482186555862427,
+            "best_zone": "abstract",
+            "source_hint": "weak_abstract",
+            "best_abstract_sim": 0.47482186555862427,
+            "best_body_sim": null,
+            "top_matches": [
+              {
+                "sim": 0.47482186555862427,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 8,
+                "text": "At least one inaccurate citation was found in 11 and 15% of articles in the feasibility study and verification set, respectively, suggesting that inaccurate citations are common in biomedical literature."
+              },
+              {
+                "sim": 0.4359820485115051,
+                "zone": "abstract",
+                "level": "paragraph",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "Abstract Citations are an important, but often overlooked, part of every scientific paper. They allow the reader to trace the flow of evidence, serving as a gateway to relevant literature. Most scientists are aware of citations’ errors, but few appreciate the prevalence of these problems. The purpose of the present study was to examine how often frequently cited papers in biomedical scientific literature are cited inaccurately. The study included an active participation of the first authors of i"
+              },
+              {
+                "sim": 0.4033055305480957,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 4,
+                "text": "The study included an active participation of the first authors of included papers; to first-hand verify the citations accuracy."
+              },
+              {
+                "sim": 0.3737918734550476,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "The purpose of the present study was to examine how often frequently cited papers in biomedical scientific literature are cited inaccurately."
+              },
+              {
+                "sim": 0.36857306957244873,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 11,
+                "text": "Based on these findings, several actions to reduce citation inaccuracies have been proposed."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1042/cs20201573",
+        "source_type": "pdf",
+        "pdf_path": "pdfs\\nihms-1690179.pdf"
+      }
+    },
+    {
+      "index": 3,
+      "reference": {
+        "raw": "[3] M. Mehregan, “Scientific journals must be alert to potential manipulation in citations and referencing,” Research Ethics, vol. 18, no. 2, pp. 163–168, 2022. [Online]. Available: https://doi.org/10.1177/17470161211068745",
+        "doi": "10.1177/17470161211068745",
+        "resolved_doi": "10.1177/17470161211068745",
+        "crossref_title": "Scientific journals must be alert to potential manipulation in citations and referencing",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1177/17470161211068745",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+        "Mehregan [3] further notes that some unsupported citations may reflect deliberate manipulation rather than simple carelessness."
+      ],
+      "occurrences": 2,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+            "label": "related",
+            "best_sim": 0.5722893476486206,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.5722893476486206,
+            "top_matches": [
+              {
+                "sim": 0.5722893476486206,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 1,
+                "sent_i": 2,
+                "text": "This may in part be attributable to unintentional errors in citation that are related to typographical mistakes and that can occur due to the negligence and carelessness of the authors; other times, however, it appears that there are many cases in which the errors in the references are due to academic misconduct (Wren and Georgescu, 2020), which is an unethical practice that involves knowingly and deliberately manipulating citations."
+              },
+              {
+                "sim": 0.5581335425376892,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 1,
+                "sent_i": 4,
+                "text": "In other words, citation manipulation happens when there is no connection between the cited reference and the scholarly content of the manuscript, and the contained reference does not support the information provided in the manuscript (COPE Council, 2019;National Academy of Sciences, National Academy of Engineering, and Institute of Medicine, 2009)."
+              },
+              {
+                "sim": 0.5381132960319519,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 1,
+                "sent_i": 3,
+                "text": "Citation manipulation is falsely citing a reference that was never utilized and is only included in the manuscript with the intention of increasing the number of its citations (COPE Council, 2019)."
+              },
+              {
+                "sim": 0.5133678317070007,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 3,
+                "sent_i": 2,
+                "text": "After all, one of the simplest ways to inflate citation counts is to repeatedly self-cite or refer to the unrelated works of the authors' academic colleagues."
+              },
+              {
+                "sim": 0.5016824007034302,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 3,
+                "sent_i": 4,
+                "text": "This action becomes unethical only when there is no material relevance between the cited sources and the scholarly content of the manuscript, and the sole intention of including those references in the manuscript is for selfpromotion or other non-scholarly reasons."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "Mehregan [3] further notes that some unsupported citations may reflect deliberate manipulation rather than simple carelessness.",
+            "label": "related",
+            "best_sim": 0.5783799290657043,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": 0.4581235945224762,
+            "best_body_sim": 0.5783799290657043,
+            "top_matches": [
+              {
+                "sim": 0.5783799290657043,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 1,
+                "sent_i": 2,
+                "text": "This may in part be attributable to unintentional errors in citation that are related to typographical mistakes and that can occur due to the negligence and carelessness of the authors; other times, however, it appears that there are many cases in which the errors in the references are due to academic misconduct (Wren and Georgescu, 2020), which is an unethical practice that involves knowingly and deliberately manipulating citations."
+              },
+              {
+                "sim": 0.4896395206451416,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 1,
+                "sent_i": 3,
+                "text": "Citation manipulation is falsely citing a reference that was never utilized and is only included in the manuscript with the intention of increasing the number of its citations (COPE Council, 2019)."
+              },
+              {
+                "sim": 0.48165184259414673,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 1,
+                "sent_i": 4,
+                "text": "In other words, citation manipulation happens when there is no connection between the cited reference and the scholarly content of the manuscript, and the contained reference does not support the information provided in the manuscript (COPE Council, 2019;National Academy of Sciences, National Academy of Engineering, and Institute of Medicine, 2009)."
+              },
+              {
+                "sim": 0.4600716233253479,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Topic Piece",
+                "para_i": 4,
+                "sent_i": 0,
+                "text": "Citation manipulation for the purpose of increasing researchers' citation counts also happens when editors or peer reviewers of the manuscript ask researchers to add several unnecessary and unrelated references to the manuscript, which is called \"coercive citation\" and is unethical (Baas and Fennell, 2019;Van Noorden, 2020)."
+              },
+              {
+                "sim": 0.4581235945224762,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "Citation manipulation simply occurs for the purpose of increasing the number of citations of a researcher or a journal."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1177/17470161211068745",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 4,
+      "reference": {
+        "raw": "[4] A. Pokharana and U. Garg, “A review on diverse algorithms used in the context of plagiarism detection,” in 2023 International Conference on Advancement in Computation & Computer Technologies (InCACCT), 2023, pp. 1–6.",
+        "doi": null,
+        "resolved_doi": "10.1109/incacct57535.2023.10141785",
+        "crossref_title": "A Review on diverse algorithms used in the context of Plagiarism Detection",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1109/incacct57535.2023.10141785",
+          "method": "milvus_cache",
+          "provider": "ieee"
+        }
+      },
+      "sentences": [
+        "Plagiarism is usually associated with direct copying, but in practice the broader issue also includes misleading paraphrase, weak attribution, and reuse of ideas that is formally cited but still ethically problematic [4].",
+        "Reviews of the field describe a gradual move from simple text matching toward more semantic and structural approaches, mainly because reused text is often changed before it appears in the suspicious document [4]."
+      ],
+      "occurrences": 2,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Plagiarism is usually associated with direct copying, but in practice the broader issue also includes misleading paraphrase, weak attribution, and reuse of ideas that is formally cited but still ethically problematic [4].",
+            "label": "supported",
+            "best_sim": 0.6402069330215454,
+            "best_zone": "body",
+            "source_hint": "body",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.6402069330215454,
+            "top_matches": [
+              {
+                "sim": 0.6402069330215454,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "• Problem of Protecting and Preserving Data",
+                "para_i": 1,
+                "sent_i": -1,
+                "text": "Along with that if you are rewriting or rephrased the preexisting work or thoughts into your own words, then this is also compulsory to cite the work, otherwise it is also the case of plagiarism. The Latin origins plagiarius, an enslaver, and plagiarism, to steal, are where the word plagiarism comes from. \"The theft of another author's work and the presentation of it as one's own, constitutes plagiarism and is a significant violation of the ethics of study,\" according to the American Historical "
+              },
+              {
+                "sim": 0.6335185766220093,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "• Problem of Protecting and Preserving Data",
+                "para_i": 6,
+                "sent_i": -1,
+                "text": "Given that it is impossible to properly study the meaning of natural languages, it is exceedingly difficult to provide an exact definition of plagiarism. Use of someone else's word without giving due credit is known as plagiarism. Written content (articles, books, newspapers, magazines, emails), programming language code, photographs, painting, pictures, spoken and multimedia goods like speeches, lectures [3], YouTube videos, movies etc., music (CD, MP3), and other types of text are all suscepti"
+              },
+              {
+                "sim": 0.627675473690033,
+                "zone": "body",
+                "level": "section",
+                "section_path": "• Problem of Protecting and Preserving Data",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "In this review paper plagiarism detection issue has been picked up of detailed study III. PLAGIARISM DETECTION Plagiarism in the academia is a major and pervasive problem. Utilization of any pre -existing work or some preexisting words/statements in any form is considered at plagiarized content, according to the Oxford Dictionary. The Office of Student Judicial Affairs states that when we use another person's work without mentioning any credit is referred as plagiarism, so it is required that wh"
+              },
+              {
+                "sim": 0.627675473690033,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "• Problem of Protecting and Preserving Data",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "In this review paper plagiarism detection issue has been picked up of detailed study III. PLAGIARISM DETECTION Plagiarism in the academia is a major and pervasive problem. Utilization of any pre -existing work or some preexisting words/statements in any form is considered at plagiarized content, according to the Oxford Dictionary. The Office of Student Judicial Affairs states that when we use another person's work without mentioning any credit is referred as plagiarism, so it is required that wh"
+              },
+              {
+                "sim": 0.6160193085670471,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "G. Stylometric-Based Methods:",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "These techniques are examples of inherent plagiarism."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "Reviews of the field describe a gradual move from simple text matching toward more semantic and structural approaches, mainly because reused text is often changed before it appears in the suspicious document [4].",
+            "label": "related",
+            "best_sim": 0.5385051369667053,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.5385051369667053,
+            "top_matches": [
+              {
+                "sim": 0.5385051369667053,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "F. Structure-Based Methods:",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "This structure-based method employs context-based similarities, that means, what is the sense behind utilizing the word in the new document, as opposed to the methods mentioned above, which were designed based on lexical, syntactic, and semantic aspects of the text in texts to detect common work in various publications."
+              },
+              {
+                "sim": 0.5296858549118042,
+                "zone": "body",
+                "level": "section",
+                "section_path": "E. Fuzzy-Based Methods:",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "This method analyses the document similarity between the range zero to one, zero state that completely different document and no similarity between work, at the same time one means 100% matched and similar work. Each written word in these files relates to a level of similarity, therefore the texts written in the documents are represented using a set of terms with comparable meanings, and sets are regarded as fuzzy in this case. This technique is appealing since it can identify document similarit"
+              },
+              {
+                "sim": 0.5296858549118042,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "E. Fuzzy-Based Methods:",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "This method analyses the document similarity between the range zero to one, zero state that completely different document and no similarity between work, at the same time one means 100% matched and similar work. Each written word in these files relates to a level of similarity, therefore the texts written in the documents are represented using a set of terms with comparable meanings, and sets are regarded as fuzzy in this case. This technique is appealing since it can identify document similarit"
+              },
+              {
+                "sim": 0.5287733674049377,
+                "zone": "body",
+                "level": "section",
+                "section_path": "F. Structure-Based Methods:",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "This structure-based method employs context-based similarities, that means, what is the sense behind utilizing the word in the new document, as opposed to the methods mentioned above, which were designed based on lexical, syntactic, and semantic aspects of the text in texts to detect common work in various publications. Our survey does turn up a few techniques in this category, though. In most cases, tree-structure feature representation is used to manage contextual information [6]. This stage i"
+              },
+              {
+                "sim": 0.5287733674049377,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "F. Structure-Based Methods:",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "This structure-based method employs context-based similarities, that means, what is the sense behind utilizing the word in the new document, as opposed to the methods mentioned above, which were designed based on lexical, syntactic, and semantic aspects of the text in texts to detect common work in various publications. Our survey does turn up a few techniques in this category, though. In most cases, tree-structure feature representation is used to manage contextual information [6]. This stage i"
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1109/incacct57535.2023.10141785",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 5,
+      "reference": {
+        "raw": "[5] M. Potthast, A. Barr´on-Cede˜no, B. Stein, and P. Rosso, “Cross-language plagiarism detection,” Language Resources and Evaluation, vol. 45, no. 1, pp. 45–62, Mar 2011. [Online]. Available: https://doi.org/10.1007/s10579-009-9114-z",
+        "doi": "10.1007/s10579-009-9114-z",
+        "resolved_doi": "10.1007/s10579-009-9114-z",
+        "crossref_title": "Cross-language plagiarism detection",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1007/s10579-009-9114-z",
+          "method": "milvus_cache",
+          "provider": "springer"
+        }
+      },
+      "sentences": [
+        "This places the task between cross-lingual plagiarism detection, which studies reuse across languages [5], and citation verification, which asks whether the cited source supports the citing statement [6]."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "This places the task between cross-lingual plagiarism detection, which studies reuse across languages [5], and citation verification, which asks whether the cited source supports the citing statement [6].",
+            "label": "supported",
+            "best_sim": 0.687353253364563,
+            "best_zone": "body",
+            "source_hint": "body",
+            "best_abstract_sim": 0.6566134095191956,
+            "best_body_sim": 0.687353253364563,
+            "top_matches": [
+              {
+                "sim": 0.687353253364563,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Introduction",
+                "para_i": 2,
+                "sent_i": -1,
+                "text": "The paper in hand investigates a particular kind of text plagiarism, namely the detection of plagiarism across languages, sometimes called translation plagiarism. The different kinds of text plagiarism are organized in Figure 1. Cross-language plagiarism, shown encircled, refers to cases where an author translates text from another language and then integrates the translated text into his/her own writing. It is reasonable to assume that plagiarism does not stop at language barriers since, for in"
+              },
+              {
+                "sim": 0.6847138404846191,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Large part of document Document model comparison Without reference: style analysis With reference: fingerprinting",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "Apart from being an important practical problem, the detection of cross-language plagiarism also poses a research challenge, since the syntactical similarity between source sections and plagiarized sections found in the monolingual setting is more or less lost across languages."
+              },
+              {
+                "sim": 0.6834552884101868,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Introduction",
+                "para_i": 2,
+                "sent_i": 0,
+                "text": "The paper in hand investigates a particular kind of text plagiarism, namely the detection of plagiarism across languages, sometimes called translation plagiarism."
+              },
+              {
+                "sim": 0.6566134095191956,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "Cross-language plagiarism detection deals with the automatic identification and extraction of plagiarism in a multilingual setting."
+              },
+              {
+                "sim": 0.6438069343566895,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Large part of document Document model comparison Without reference: style analysis With reference: fingerprinting",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "Figure 1 Taxonomy of text plagiarism types, along with approaches to detect them [19]. also includes cross-lingual cases [16]. Apart from being an important practical problem, the detection of cross-language plagiarism also poses a research challenge, since the syntactical similarity between source sections and plagiarized sections found in the monolingual setting is more or less lost across languages. Hence, research on this task may help to improve current methods of cross-language information"
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1007/s10579-009-9114-z",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 6,
+      "reference": {
+        "raw": "[6] A. Zeeb and P. Olsson, “Citation evaluation using large language models (llms) : Can llms evaluate citations in scholarly documents? an experimental study on chatgpt,” p. 43, 2024.",
+        "doi": null,
+        "resolved_doi": "10.1021/acs.chas.4c00097.s001",
+        "crossref_title": "Can Large Language Models (LLMs) Act as Virtual Safety Officers?",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1021/acs.chas.4c00097.s001",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "This places the task between cross-lingual plagiarism detection, which studies reuse across languages [5], and citation verification, which asks whether the cited source supports the citing statement [6].",
+        "Zeeb and Olsson explicitly study whether large language models can evaluate citations in scholarly documents [6]."
+      ],
+      "occurrences": 2,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "This places the task between cross-lingual plagiarism detection, which studies reuse across languages [5], and citation verification, which asks whether the cited source supports the citing statement [6].",
+            "label": "related",
+            "best_sim": 0.615209698677063,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.615209698677063,
+            "top_matches": [
+              {
+                "sim": 0.615209698677063,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "",
+                "para_i": 8,
+                "sent_i": -1,
+                "text": "This broad capability makes LLMs particularly valuable for citation verification. In academic writing, ensuring that citations accurately reflect the cited sources is crucial. However, this task can be challenging due to the complexities of language and context. The ability of LLMs to analyse text could potentially enable it to assess whether a citation properly supports the claims made and whether it has been taken out of context."
+              },
+              {
+                "sim": 0.5866422653198242,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Related work",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "Their research categorises citation errors into three categories: omissions, which occur when authors overlook relevant research, incorrect references, which involve errors in citing sources such as incorrect author names and wrong titles, and quotation errors, which misreport the findings of cited studies."
+              },
+              {
+                "sim": 0.5844825506210327,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Implementation",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "Here, the implementation of this study, which aimed to use the LLMs ChatGPT 3.5 and 4 to evaluate citations in scholarly papers, will be discussed. The first step is reviewing relevant literature to construct a dataset. The aim of this dataset construction was to identify three primary types of citations: paraphrasing, direct quotation and summarising. Citations were extracted along with their corresponding source texts, giving each a boolean value, true indicating that the citation is valid and"
+              },
+              {
+                "sim": 0.5783896446228027,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Related work",
+                "para_i": 0,
+                "sent_i": 6,
+                "text": "This emphasises the need for such tools that can assist in verifying and evaluating citations, a goal aligned with the objectives of this research on using LLMs for citation verification."
+              },
+              {
+                "sim": 0.5742496848106384,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Related work",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "In 2008, Wright et al [14]. examined the prevalence and impact of faulty citations in academic literature. Their research categorises citation errors into three categories: omissions, which occur when authors overlook relevant research, incorrect references, which involve errors in citing sources such as incorrect author names and wrong titles, and quotation errors, which misreport the findings of cited studies. They highlight that a significant portion of citations in scholarly work are inaccur"
+              }
+            ]
+          },
+          {
+            "citing_sentence": "Zeeb and Olsson explicitly study whether large language models can evaluate citations in scholarly documents [6].",
+            "label": "related",
+            "best_sim": 0.608478844165802,
+            "best_zone": "abstract",
+            "source_hint": "weak_abstract",
+            "best_abstract_sim": 0.608478844165802,
+            "best_body_sim": 0.5736498832702637,
+            "top_matches": [
+              {
+                "sim": 0.608478844165802,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "This study investigates the capacity of Large Language Models (LLMs), specifically ChatGPT 3.5 and 4, to evaluate citations in scholarly papers."
+              },
+              {
+                "sim": 0.5736498832702637,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Model Evaluation",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "To evaluate the models, a number of experiments is conducted, focusing on their ability to classify citations as valid or invalid."
+              },
+              {
+                "sim": 0.5669780373573303,
+                "zone": "abstract",
+                "level": "paragraph",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "This study investigates the capacity of Large Language Models (LLMs), specifically ChatGPT 3.5 and 4, to evaluate citations in scholarly papers. Given the importance of accurate citations in academic writing, the goal was to determine how well these models can assist in verifying citations. A series of experiments were conducted using a dataset of our own creation. This dataset includes the three main citation categories: Direct Quotation, Paraphrasing, and Summarising, along with subcategories "
+              },
+              {
+                "sim": 0.5583568215370178,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Research Questions:",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "• RQ 1: Can LLMs be used to evaluate citations in scholarly documents?"
+              },
+              {
+                "sim": 0.5583568215370178,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Research Questions:",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "• RQ 1: Can LLMs be used to evaluate citations in scholarly documents?"
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1021/acs.chas.4c00097.s001",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 7,
+      "reference": {
+        "raw": "[7] L. Turnitin. (2025) Turnitin. [Online]. Available: https://www.turnitin.com/",
+        "doi": null,
+        "resolved_doi": "10.32672/jnkti.v8i1.8790.s1099",
+        "crossref_title": "Turnitin",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\10.32672_jnkti.v8i1.8790.s1099.pdf",
+          "method": "exists"
+        }
+      },
+      "sentences": [
+        "Systems such as Turnitin [7] and CRZP [8] are useful when the goal is to compare suspicious text against large repositories and flag lexical overlap.",
+        "Turnitin [7] and iThenticate [20] are widely used in broader academic workflows, while Odevzdej [21] and CRZP [8] play a similar role in Czech and Slovak environments."
+      ],
+      "occurrences": 2,
+      "verification": {
+        "status": "empty_reference_index",
+        "ref_key": "10.32672/jnkti.v8i1.8790.s1099"
+      }
+    },
+    {
+      "index": 8,
+      "reference": {
+        "raw": "[8] C. SR. (2025) Centr´alny register z´avereˇcn´ych a kvalifikaˇcn´ych pr´ac. [Online]. Available: https://crzp.cvtisr.sk/",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "Systems such as Turnitin [7] and CRZP [8] are useful when the goal is to compare suspicious text against large repositories and flag lexical overlap.",
+        "Turnitin [7] and iThenticate [20] are widely used in broader academic workflows, while Odevzdej [21] and CRZP [8] play a similar role in Czech and Slovak environments.",
+        "Corpus construction The main experiment used a corpus of 1000 bachelor and master theses collected from the Central Register of Theses and Dissertations [8]."
+      ],
+      "occurrences": 3,
+      "verification": {
+        "status": "no_source_text",
+        "download_status": "no_valid_doi"
+      }
+    },
+    {
+      "index": 9,
+      "reference": {
+        "raw": "[9] N. Ehsan, A. Shakery, and F. W. Tompa, “Cross-lingual text alignment for fine-grained plagiarism detection,” J. Inf. Sci., vol. 45, no. 4, p. 443–459, Aug. 2019. [Online]. Available: https://doi.org/10.1177/0165551518787696",
+        "doi": "10.1177/0165551518787696",
+        "resolved_doi": "10.1177/0165551518787696",
+        "crossref_title": "Cross-lingual text alignment for fine-grained plagiarism detection",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1177/0165551518787696",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Early approaches relied on dictionary-based [9] translation or syntax-based [10] comparison."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Early approaches relied on dictionary-based [9] translation or syntax-based [10] comparison.",
+            "label": "supported",
+            "best_sim": 0.6566078662872314,
+            "best_zone": "abstract",
+            "source_hint": "mostly_abstract",
+            "best_abstract_sim": 0.6566078662872314,
+            "best_body_sim": null,
+            "top_matches": [
+              {
+                "sim": 0.6566078662872314,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 5,
+                "text": "In both steps, our approach uses a dictionary to obtain translations of individual terms instead of using a machine translation system to convert longer passages from one language to another."
+              },
+              {
+                "sim": 0.4933648109436035,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 6,
+                "text": "We used a weighting scheme to distinct multiple translations of the terms."
+              },
+              {
+                "sim": 0.4760891795158386,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "Fast and easy access to a wide range of documents in various languages, in conjunction with the wide availability of translation and editing tools, has led to the need to develop effective tools for detecting cross-lingual plagiarism."
+              },
+              {
+                "sim": 0.472650408744812,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "Our proposed approach has two main steps: the first step tries to find candidate plagiarised fragments and focuses on high recall, followed by a more precise similarity analysis based on dynamic text alignment that will filter the results by finding alignments between the identified fragments."
+              },
+              {
+                "sim": 0.41542744636535645,
+                "zone": "abstract",
+                "level": "paragraph",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "Fast and easy access to a wide range of documents in various languages, in conjunction with the wide availability of translation and editing tools, has led to the need to develop effective tools for detecting cross-lingual plagiarism. Given a suspicious document, cross-lingual plagiarism detection comprises two main subtasks: retrieving documents that are candidate sources for that document and analysing those candidates one by one to determine their similarity to the suspicious document. In thi"
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1177/0165551518787696",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 10,
+      "reference": {
+        "raw": "[10] V. K and D. Gupta, “Text plagiarism classification using syntax based linguistic features,” Expert Systems with Applications, vol. 88, pp. 448–464, 2017. [Online]. Available: https://www.sciencedirect.com/science/article/pii/S095741741730475X",
+        "doi": null,
+        "resolved_doi": "10.1016/j.eswa.2017.07.006",
+        "crossref_title": "Text plagiarism classification using syntax based linguistic features",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1016/j.eswa.2017.07.006",
+          "method": "milvus_cache",
+          "provider": "elsevier"
+        }
+      },
+      "sentences": [
+        "Early approaches relied on dictionary-based [9] translation or syntax-based [10] comparison."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Early approaches relied on dictionary-based [9] translation or syntax-based [10] comparison.",
+            "label": "related",
+            "best_sim": 0.5319018363952637,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.5319018363952637,
+            "top_matches": [
+              {
+                "sim": 0.5319018363952637,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Existing systems",
+                "para_i": 4,
+                "sent_i": 1,
+                "text": "(2010) utilized features which included the similarity scores computed from the N-gram representations, language models, longest common subsequence, dependency relations and using basic pre-processing techniques such as stop word removal, number replacements etc."
+              },
+              {
+                "sim": 0.5214632749557495,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Comparisons with the baseline systems",
+                "para_i": 1,
+                "sent_i": 0,
+                "text": "This approach used features based on different similarity scores."
+              },
+              {
+                "sim": 0.515235185623169,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Introduction",
+                "para_i": 5,
+                "sent_i": 0,
+                "text": "• An approach that utilizes minimal and effective syntax based linguistic features for plagiarism classification."
+              },
+              {
+                "sim": 0.47753891348838806,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Existing systems",
+                "para_i": 2,
+                "sent_i": 2,
+                "text": "Distribution representation of words or word embeddings were also utilized, especially for cross-lingual text similarity detections ( Banea, Chen, Mihalcea, Cardie, & Wiebe, 2014;Ferrero, Besaceir, Schwab, & Agnes, 2017 )."
+              },
+              {
+                "sim": 0.46720653772354126,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Comparisons with the baseline systems",
+                "para_i": 1,
+                "sent_i": -1,
+                "text": "1. Chong et al. (2010) : This approach used features based on different similarity scores. Similarity scores obtained using 7 features, viz., Trigram Containment Measure (as Baseline), Baseline + Lemma, Baseline + Stop word + Punctual removal + Number replacements, Language Model -Bigram Perplexity, Language Model -Trigram Perplexity, Longest Common Subsequence and Dependency Relations are used. The results are tested on PSA corpus with NB 10-fold crossvalidation in Weka. 2. Sanchez Vega et al. "
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1016/j.eswa.2017.07.006",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 11,
+      "reference": {
+        "raw": "[11] W. G. S. Parwita, I. G. A. A. D. Indradewi, and I. N. S. W. Wijaya, “String matching based plagiarism detection for document in bahasa indonesia,” in 2019 5th International Conference on New Media Studies (CONMEDIA), 2019, pp. 54–58.",
+        "doi": null,
+        "resolved_doi": "10.1109/conmedia46929.2019.8981821",
+        "crossref_title": "String Matching based Plagiarism Detection for Document in Bahasa Indonesia",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\String_Matching_based_Plagiarism_Detection_for_Document_in_Bahasa_Indonesia.pdf",
+          "final_url": "https://ieeexplore.ieee.org/document/8981821/",
+          "method": "http",
+          "provider": "ieee"
+        }
+      },
+      "sentences": [
+        "Classical lexical methods such as string matching [11] and n-gram [12] comparison can still work when the suspicious text stays close to the source."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "empty_reference_index",
+        "ref_key": "10.1109/conmedia46929.2019.8981821"
+      }
+    },
+    {
+      "index": 12,
+      "reference": {
+        "raw": "[12] I. Bensalem, P. Rosso, and S. Chikhi, “Intrinsic plagiarism detection using n-gram classes,” in Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP), A. Moschitti, B. Pang, and W. Daelemans, Eds. Doha, Qatar: Association for Computational Linguistics, Oct. 2014, pp. 1459–1464. [Online]. Available: https://aclanthology.org/D14-1153/",
+        "doi": null,
+        "resolved_doi": "10.3115/v1/d14-1153",
+        "crossref_title": "Intrinsic Plagiarism Detection using N-gram Classes",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.3115/v1/d14-1153",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Classical lexical methods such as string matching [11] and n-gram [12] comparison can still work when the suspicious text stays close to the source."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Classical lexical methods such as string matching [11] and n-gram [12] comparison can still work when the suspicious text stays close to the source.",
+            "label": "related",
+            "best_sim": 0.5282893180847168,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.5282893180847168,
+            "top_matches": [
+              {
+                "sim": 0.5282893180847168,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Introduction and Related Works",
+                "para_i": 4,
+                "sent_i": -1,
+                "text": "Unlike the authorship attribution and verification, where the examined text and the potential author text are separate (and hence their writing styles could be readily characterized and compared), these two parts are both merged in the same document with unknown boundaries. Furthermore, the plagiarized fragments in a suspicious document might stem from different authors, which renders the computational characterization of plagiarism difficult."
+              },
+              {
+                "sim": 0.5030836462974548,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Introduction and Related Works",
+                "para_i": 5,
+                "sent_i": -1,
+                "text": "As opposed to the problem of authorship clustering, where the task is merely to attribute already defined fragments of a given document to different authors, the segmentation is a crucial and inevitable task in a real scenario of intrinsic plagiarism detection. Indeed, a granular segmentation may lead to an undependable style analysis, and a coarse segmentation may prevent the identification of the short plagiarized texts."
+              },
+              {
+                "sim": 0.49308714270591736,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Introduction and Related Works",
+                "para_i": 5,
+                "sent_i": 1,
+                "text": "Indeed, a granular segmentation may lead to an undependable style analysis, and a coarse segmentation may prevent the identification of the short plagiarized texts."
+              },
+              {
+                "sim": 0.48369550704956055,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Motivation",
+                "para_i": 1,
+                "sent_i": -1,
+                "text": "On the other hand, according to the authorship attribution researches, character n-grams are a powerful tool for characterizing the writing style (Stamatatos, 2009a). Moreover, they have been used in one of the best intrinsic plagiarism detection methods (Stamatatos, 2009b)."
+              },
+              {
+                "sim": 0.4826001524925232,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Introduction and Related Works",
+                "para_i": 4,
+                "sent_i": 0,
+                "text": "Unlike the authorship attribution and verification, where the examined text and the potential author text are separate (and hence their writing styles could be readily characterized and compared), these two parts are both merged in the same document with unknown boundaries."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.3115/v1/d14-1153",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 13,
+      "reference": {
+        "raw": "[13] A. Amirzhanov, C. Turan, and A. Makhmutova, “Plagiarism types and detection methods: a systematic survey of algorithms in text analysis,” Frontiers in Computer Science, vol. Volume 7 - 2025, 2025. [Online]. Available: https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp. 2025.1504725",
+        "doi": "10.3389/fcomp.2025.1504725",
+        "resolved_doi": "10.3389/fcomp.2025.1504725",
+        "crossref_title": "Plagiarism types and detection methods: a systematic survey of algorithms in text analysis",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.3389/fcomp.2025.1504725",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Their weakness is that performance drops when the author translates, paraphrases, or compresses the original meaning more aggressively [13].",
+        "[13] describe cross-lingual plagiarism detection as a problem that increasingly requires multilingual rather than purely lexical comparison."
+      ],
+      "occurrences": 2,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Their weakness is that performance drops when the author translates, paraphrases, or compresses the original meaning more aggressively [13].",
+            "label": "related",
+            "best_sim": 0.4872843623161316,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.4872843623161316,
+            "top_matches": [
+              {
+                "sim": 0.4872843623161316,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": ". Types of plagiarism",
+                "para_i": 2,
+                "sent_i": 2,
+                "text": "• Translation plagiarism: translating content from one language to another without citation."
+              },
+              {
+                "sim": 0.46983209252357483,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": ". Types of plagiarism",
+                "para_i": 2,
+                "sent_i": 0,
+                "text": "• Paraphrased plagiarism: rewriting the original text while retaining the core meaning."
+              },
+              {
+                "sim": 0.44470053911209106,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": ". Semantic similarity-based approaches",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "Semantic similarity methods detect plagiarism by analyzing the meaning behind words, going beyond surface-level text comparison."
+              },
+              {
+                "sim": 0.4391002357006073,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Computationally efficient but less accurate methods",
+                "para_i": 1,
+                "sent_i": -1,
+                "text": "• Lexical and string matching techniques: fast but weak against paraphrased content."
+              },
+              {
+                "sim": 0.4391002357006073,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Computationally efficient but less accurate methods",
+                "para_i": 1,
+                "sent_i": 0,
+                "text": "• Lexical and string matching techniques: fast but weak against paraphrased content."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "[13] describe cross-lingual plagiarism detection as a problem that increasingly requires multilingual rather than purely lexical comparison.",
+            "label": "supported",
+            "best_sim": 0.788312554359436,
+            "best_zone": "body",
+            "source_hint": "body",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.788312554359436,
+            "top_matches": [
+              {
+                "sim": 0.788312554359436,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Evolution of detection methodologies in reviewed papers",
+                "para_i": 3,
+                "sent_i": 1,
+                "text": "-A growing need for cross-language plagiarism detection."
+              },
+              {
+                "sim": 0.7763428092002869,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Paper selection methodology",
+                "para_i": 2,
+                "sent_i": 6,
+                "text": "-Monolingual plagiarism detection vs. cross-lingual plagiarism detection methods."
+              },
+              {
+                "sim": 0.7576504945755005,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Cross-language and multilingual approaches",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "Cross-language plagiarism detection methods address the challenge of identifying plagiarism in translated texts."
+              },
+              {
+                "sim": 0.7546070218086243,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Cross-language and multilingual approaches",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "Cross-language plagiarism detection methods address the challenge of identifying plagiarism in translated texts. These include:"
+              },
+              {
+                "sim": 0.741423487663269,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": ". Actionable insights",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "-lingual plagiarism detection: multilingual embedding models and cross-language knowledge graphs should be further developed to tackle translated plagiarism."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.3389/fcomp.2025.1504725",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 14,
+      "reference": {
+        "raw": "[14] J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, “BERT: Pre-training of deep bidirectional transformers for language understanding,” Minneapolis, Minnesota, pp. 4171–4186, Jun. 2019. [Online]. Available: https://aclanthology.org/N19-1423/",
+        "doi": null,
+        "resolved_doi": "10.18653/v1/N19-1423",
+        "crossref_title": "Spectrum-BERT: Pre-training of Deep Bidirectional Transformers for Spectral Classification of Chinese Liquors_supp1-3374300.docx",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\N19-1423.pdf",
+          "final_url": "https://ieeexplore.ieee.org/ielx7/19/10367905/10462230/supp1-3374300.docx?arnumber=10462230",
+          "method": "failed",
+          "provider": "ieee"
+        }
+      },
+      "sentences": [
+        "BERT [14] showed that contextual pretraining can learn richer text representations than simple lexical features."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "BERT [14] showed that contextual pretraining can learn richer text representations than simple lexical features.",
+            "label": "related",
+            "best_sim": 0.5363986492156982,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": 0.5157654285430908,
+            "best_body_sim": 0.5363986492156982,
+            "top_matches": [
+              {
+                "sim": 0.5363986492156982,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Introduction",
+                "para_i": 4,
+                "sent_i": -1,
+                "text": "• We demonstrate the importance of bidirectional pre-training for language representations. Unlike Radford et al. (2018), which uses unidirectional language models for pre-training, BERT uses masked language models to enable pretrained deep bidirectional representations. This is also in contrast to Peters et al. (2018a), which uses a shallow concatenation of independently trained left-to-right and right-to-left LMs."
+              },
+              {
+                "sim": 0.532248854637146,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Pre-training data",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "The pre-training procedure largely follows the existing literature on language model pre-training. For the pre-training corpus we use the BooksCorpus (800M words) (Zhu et al., 2015) and English Wikipedia (2,500M words). For Wikipedia we extract only the text passages and ignore lists, tables, and headers. It is critical to use a document-level corpus rather than a shuffled sentence-level corpus such as the Billion Word Benchmark (Chelba et al., 2013) in order to extract long contiguous sequences"
+              },
+              {
+                "sim": 0.5286217927932739,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "A.4 Comparison of BERT, ELMo ,and",
+                "para_i": 3,
+                "sent_i": 1,
+                "text": "BERT is trained on the BooksCorpus (800M words) and Wikipedia (2,500M words)."
+              },
+              {
+                "sim": 0.5157654285430908,
+                "zone": "abstract",
+                "level": "paragraph",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models (Peters et al., 2018a;Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be finetuned with just one additional output layer to create state-of-the-ar"
+              },
+              {
+                "sim": 0.5121738314628601,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "Unlike recent language representation models (Peters et al., 2018a;Radford et al., 2018), BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.18653/v1/N19-1423",
+        "source_type": "pdf",
+        "pdf_path": "pdfs\\N19-1423.pdf"
+      }
+    },
+    {
+      "index": 15,
+      "reference": {
+        "raw": "[15] A. Conneau, K. Khandelwal, N. Goyal, V. Chaudhary, G. Wenzek, F. Guzm´an, E. Grave, M. Ott, L. Zettlemoyer, and V. Stoyanov, “Unsupervised cross-lingual representation learning at scale,” in Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, D. Jurafsky, J. Chai, N. Schluter, and J. Tetreault, Eds. Online: Association for Computational Linguistics, Jul. 2020, pp. 8440–8451. [Online]. Available: https://aclanthology.org/2020.acl-main.747/",
+        "doi": null,
+        "resolved_doi": "10.18653/v1/2020.acl-main.747",
+        "crossref_title": "Unsupervised Cross-lingual Representation Learning at Scale",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.18653/v1/2020.acl-main.747",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "XLM-R [15] extended this idea to many languages and remains a strong baseline for cross-lingual semantic tasks.",
+        "The testing used an XLM-R-based [15] sentence embedding model because it offers broad language coverage and good practical performance in cross-lingual similarity tasks [17]."
+      ],
+      "occurrences": 2,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "XLM-R [15] extended this idea to many languages and remains a strong baseline for cross-lingual semantic tasks.",
+            "label": "supported",
+            "best_sim": 0.6257534027099609,
+            "best_zone": "body",
+            "source_hint": "body",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.6257534027099609,
+            "top_matches": [
+              {
+                "sim": 0.6257534027099609,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Analysis and Results",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "We then present the results of XLM-R on cross-lingual understanding and GLUE."
+              },
+              {
+                "sim": 0.614250659942627,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Introduction",
+                "para_i": 1,
+                "sent_i": -1,
+                "text": "Multilingual masked language models (MLM) like mBERT (Devlin et al., 2018) and XLM (Lample and Conneau, 2019) have pushed the stateof-the-art on cross-lingual understanding tasks by jointly pretraining large Transformer models (Vaswani et al., 2017) on many languages. These models allow for effective cross-lingual transfer, as seen in a number of benchmarks including cross-lingual natural language inference (Bowman et al., 2015;Williams et al., 2017;Conneau et al., 2018), question answering (Raj"
+              },
+              {
+                "sim": 0.5991871356964111,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Model",
+                "para_i": 2,
+                "sent_i": 4,
+                "text": "While XLM-R is among the largest models partly due to its large embedding layer, it has a similar number of parameters than XLM-100, and remains significantly smaller that recently introduced Transformer models for multilingual MT and transfer learning."
+              },
+              {
+                "sim": 0.5914053916931152,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Conclusion",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "In this work, we introduced XLM-R, our new state of the art multilingual masked language model trained on 2.5 TB of newly created clean Com-monCrawl data in 100 languages. We show that it provides strong gains over previous multilingual models like mBERT and XLM on classification, sequence labeling and question answering. We exposed the limitations of multilingual MLMs, in particular by uncovering the high-resource versus low-resource trade-off, the curse of multilinguality and the importance of"
+              },
+              {
+                "sim": 0.5914053916931152,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Conclusion",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "In this work, we introduced XLM-R, our new state of the art multilingual masked language model trained on 2.5 TB of newly created clean Com-monCrawl data in 100 languages. We show that it provides strong gains over previous multilingual models like mBERT and XLM on classification, sequence labeling and question answering. We exposed the limitations of multilingual MLMs, in particular by uncovering the high-resource versus low-resource trade-off, the curse of multilinguality and the importance of"
+              }
+            ]
+          },
+          {
+            "citing_sentence": "The testing used an XLM-R-based [15] sentence embedding model because it offers broad language coverage and good practical performance in cross-lingual similarity tasks [17].",
+            "label": "supported",
+            "best_sim": 0.7088304758071899,
+            "best_zone": "abstract",
+            "source_hint": "mostly_abstract",
+            "best_abstract_sim": 0.7088304758071899,
+            "best_body_sim": 0.6603099703788757,
+            "top_matches": [
+              {
+                "sim": 0.7088304758071899,
+                "zone": "abstract",
+                "level": "paragraph",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "This paper shows that pretraining multilingual language models at scale leads to significant performance gains for a wide range of crosslingual transfer tasks. We train a Transformerbased masked language model on one hundred languages, using more than two terabytes of filtered CommonCrawl data. Our model, dubbed XLM-R, significantly outperforms multilingual BERT (mBERT) on a variety of cross-lingual benchmarks, including +14.6% average accuracy on XNLI, +13% average F1 score on MLQA, and +2.4% F"
+              },
+              {
+                "sim": 0.6603099703788757,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Introduction",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "We present XLM-R a transformer-based multilingual masked language model pre-trained on text in 100 languages, which obtains state-of-the-art performance on cross-lingual classification, sequence labeling and question answering."
+              },
+              {
+                "sim": 0.655879020690918,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 5,
+                "text": "Finally, we show, for the first time, the possibility of multilingual modeling without sacrificing perlanguage performance; XLM-R is very competitive with strong monolingual models on the GLUE and XNLI benchmarks."
+              },
+              {
+                "sim": 0.64549320936203,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Introduction",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "The goal of this paper is to improve cross-lingual language understanding (XLU), by carefully studying the effects of training unsupervised crosslingual representations at a very large scale. We present XLM-R a transformer-based multilingual masked language model pre-trained on text in 100 languages, which obtains state-of-the-art performance on cross-lingual classification, sequence labeling and question answering. Multilingual masked language models (MLM) like mBERT (Devlin et al., 2018) and X"
+              },
+              {
+                "sim": 0.6287959814071655,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Introduction",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "The goal of this paper is to improve cross-lingual language understanding (XLU), by carefully studying the effects of training unsupervised crosslingual representations at a very large scale. We present XLM-R a transformer-based multilingual masked language model pre-trained on text in 100 languages, which obtains state-of-the-art performance on cross-lingual classification, sequence labeling and question answering."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.18653/v1/2020.acl-main.747",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 16,
+      "reference": {
+        "raw": "[16] D. Liang, H. Gonen, Y. Mao, R. Hou, N. Goyal, M. Ghazvininejad, L. Zettlemoyer, and M. Khabsa, “XLM-V: Overcoming the vocabulary bottleneck in multilingual masked language models,” Singapore, pp. 13 142–13 152, Dec. 2023. [Online]. Available: https://aclanthology.org/2023.emnlp-main.813/",
+        "doi": null,
+        "resolved_doi": "10.18653/v1/2023.emnlp-main.813",
+        "crossref_title": "XLM-V: Overcoming the Vocabulary Bottleneck in Multilingual Masked Language Models",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.18653/v1/2023.emnlp-main.813",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Newer encoder families such as XLM-V [16] continue this line by improving multilingual coverage and representation quality."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Newer encoder families such as XLM-V [16] continue this line by improving multilingual coverage and representation quality.",
+            "label": "related",
+            "best_sim": 0.6017849445343018,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": 0.5335893630981445,
+            "best_body_sim": 0.6017849445343018,
+            "top_matches": [
+              {
+                "sim": 0.6017849445343018,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Fully trained model",
+                "para_i": 2,
+                "sent_i": 0,
+                "text": "Table 3: XLM-V outperforms XLM-R on cross-lingual transfer on every language in XNLI with outsized improvements on the lower-resource languages, Swahili and Urdu."
+              },
+              {
+                "sim": 0.5335893630981445,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "This vocabulary bottleneck limits the representational capabilities of multilingual models like XLM-R."
+              },
+              {
+                "sim": 0.531116783618927,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Sentencepiece",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "This method is used by both XLM-R and our work. et al. (2020) proposed an approach to multilingual vocabulary construction that balances the trade-off between optimizing for cross-lingual subword sharing and the need for robust representation of individual languages."
+              },
+              {
+                "sim": 0.5248984694480896,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 4,
+                "text": "Tokenizations using our vocabulary are typically more semantically meaningful and shorter compared to XLM-R. Leveraging this improved vocabulary, we train XLM-V, a multilingual language model with a one million token vocabulary."
+              },
+              {
+                "sim": 0.523051917552948,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Fully trained model",
+                "para_i": 8,
+                "sent_i": 2,
+                "text": "In particular, we find that XLM-V consistently outperforms XLM-R on low-resource languages."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.18653/v1/2023.emnlp-main.813",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 17,
+      "reference": {
+        "raw": "[17] M. Abdous, P. Piroozfar, and B. MinaeiBidgoli, “Pests: Persian english cross lingual corpus for semantic textual similarity,” Language Resources and Evaluation, vol. 59, no. 2, pp. 1179–1199, Jun 2025. [Online]. Available: https://doi.org/10.1007/s10579-024-09759-3",
+        "doi": "10.1007/s10579-024-09759-3",
+        "resolved_doi": "10.1007/s10579-024-09759-3",
+        "crossref_title": "PESTS: Persian_English cross lingual corpus for semantic textual similarity",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1007/s10579-024-09759-3",
+          "method": "milvus_cache",
+          "provider": "springer"
+        }
+      },
+      "sentences": [
+        "Recent studies report good results for transformer-based multilingual embeddings in paraphrase-oriented and semantic cross-lingual settings [17].",
+        "The testing used an XLM-R-based [15] sentence embedding model because it offers broad language coverage and good practical performance in cross-lingual similarity tasks [17]."
+      ],
+      "occurrences": 2,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Recent studies report good results for transformer-based multilingual embeddings in paraphrase-oriented and semantic cross-lingual settings [17].",
+            "label": "related",
+            "best_sim": 0.5683850049972534,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.5683850049972534,
+            "top_matches": [
+              {
+                "sim": 0.5683850049972534,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Conclusion",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "Semantic textual similarity represents a significant area of research in natural language processing, particularly in the context of cross-lingual applications."
+              },
+              {
+                "sim": 0.5464769005775452,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Related works",
+                "para_i": 3,
+                "sent_i": -1,
+                "text": "Ferrero et al. (Ferrero et al., 2016) provided a dataset to assess the similarity of cross lingual texts that can be very useful in fraud detection. The dataset provided is multilingual, containing texts in French, English, and Spanish languages. It facilitates cross-lingual alignment of information at different levels, such as documents, sentences, and fragments. The dataset comprises both human-generated texts and texts obtained through machine translation. This dataset also includes a variety"
+              },
+              {
+                "sim": 0.5425642728805542,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Results and discussion",
+                "para_i": 0,
+                "sent_i": 6,
+                "text": "Some of these Transformers are multilingual, such as Multilingual BERT (mBERT) and XLM (Cross-lingual Language Model)."
+              },
+              {
+                "sim": 0.5378981232643127,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Related works",
+                "para_i": 6,
+                "sent_i": -1,
+                "text": "In their study, Tang et al. (Tang et al., 2018) developed a model for lowresource languages such as Spanish, Arabic, Indonesian, and Thai. Using a monolingual semantic similarity model framework, they extended it to multilingual mode. This approach demonstrated that through the utilization of a shared multilingual encoder, each sentence could exhibit distinct embeddings depending on the target language."
+              },
+              {
+                "sim": 0.5246354341506958,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Experiments",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "For instance, the \"paraphrase-xlm-r-multilingual-v1\" model (Reimers & Gurevych, 2020) achieved a Pearson correlation of 85.87 in the non-fine-tuned mode and an impressive Pearson correlation of 95.62 in the fine-tuned mode."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "The testing used an XLM-R-based [15] sentence embedding model because it offers broad language coverage and good practical performance in cross-lingual similarity tasks [17].",
+            "label": "related",
+            "best_sim": 0.6055790185928345,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.6055790185928345,
+            "top_matches": [
+              {
+                "sim": 0.6055790185928345,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Experiments",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "To assess the performance of the developed model, we conducted tests and evaluations using cross-lingual semantic textual similarity test data."
+              },
+              {
+                "sim": 0.5859397649765015,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Results and discussion",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "In this paper, we have performed experiments on the generated corpus, employing a range of Transformer-based language models. Our objective was to assess and compare the performance of these models in tasks associated with quantifying semantic textual similarity. Transformers have been developed to address the sequencing problem in neural networks. They demonstrate exceptional proficiency in handling sequences of data, such as the words in a sentence. They meticulously scrutinize each element of"
+              },
+              {
+                "sim": 0.5859397649765015,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Results and discussion",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "In this paper, we have performed experiments on the generated corpus, employing a range of Transformer-based language models. Our objective was to assess and compare the performance of these models in tasks associated with quantifying semantic textual similarity. Transformers have been developed to address the sequencing problem in neural networks. They demonstrate exceptional proficiency in handling sequences of data, such as the words in a sentence. They meticulously scrutinize each element of"
+              },
+              {
+                "sim": 0.5777683258056641,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Experiments",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "To assess the performance of the developed model, we conducted tests and evaluations using cross-lingual semantic textual similarity test data. We employed the cosine similarity metric to compute the semantic similarity score between sentence (1) 4, highlight that by utilizing the generated corpus, the Transformer-based models exhibit an improved ability to measure semantic similarity between English and Persian. For instance, the \"paraphrase-xlm-r-multilingual-v1\" model (Reimers & Gurevych, 202"
+              },
+              {
+                "sim": 0.5777683258056641,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Experiments",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "To assess the performance of the developed model, we conducted tests and evaluations using cross-lingual semantic textual similarity test data. We employed the cosine similarity metric to compute the semantic similarity score between sentence (1) 4, highlight that by utilizing the generated corpus, the Transformer-based models exhibit an improved ability to measure semantic similarity between English and Persian. For instance, the \"paraphrase-xlm-r-multilingual-v1\" model (Reimers & Gurevych, 202"
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1007/s10579-024-09759-3",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 18,
+      "reference": {
+        "raw": "[18] A. Cohan, W. Ammar, M. van Zuylen, and F. Cady, “Structural scaffolds for citation intent classification in scientific publications,” in Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), J. Burstein, C. Doran, and T. Solorio, Eds. Minneapolis, Minnesota: Association for Computational Linguistics, Jun. 2019, pp. 3586–3596. [Online]. Available: https://aclanthology.org/N19-1361/",
+        "doi": null,
+        "resolved_doi": "10.18653/v1/n19-1361",
+        "crossref_title": "Structural Scaffolds for Citation Intent Classification in Scientific Publications",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\10.18653_v1_n19-1361.pdf",
+          "final_url": "https://aclanthology.org/N19-1361.pdf",
+          "method": "http",
+          "provider": "http"
+        }
+      },
+      "sentences": [
+        "SciCite, for example, classifies citation intent in scientific writing [18]."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "SciCite, for example, classifies citation intent in scientific writing [18].",
+            "label": "related",
+            "best_sim": 0.5811443328857422,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": 0.5332149863243103,
+            "best_body_sim": 0.5811443328857422,
+            "top_matches": [
+              {
+                "sim": 0.5811443328857422,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Structural scaffolds",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "In scientific writing there is a connection between the structure of scientific papers and the intent of citations."
+              },
+              {
+                "sim": 0.5381902456283569,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Introduction",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "Citations play a unique role in scientific discourse and are crucial for understanding and analyzing scientific work (Luukkonen, 1992;Leydesdorff, 1998). They are also typically used as the main measure for assessing impact of scientific publications, venues, and researchers (Li and Ho, 2008). The nature of citations can be different. Some citations indicate direct use of a method while some others merely serve as acknowledging a prior work. Therefore, identifying the intent of citations (Figure"
+              },
+              {
+                "sim": 0.5381902456283569,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Introduction",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "Citations play a unique role in scientific discourse and are crucial for understanding and analyzing scientific work (Luukkonen, 1992;Leydesdorff, 1998). They are also typically used as the main measure for assessing impact of scientific publications, venues, and researchers (Li and Ho, 2008). The nature of citations can be different. Some citations indicate direct use of a method while some others merely serve as acknowledging a prior work. Therefore, identifying the intent of citations (Figure"
+              },
+              {
+                "sim": 0.5359259843826294,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Structural scaffolds",
+                "para_i": 1,
+                "sent_i": 7,
+                "text": "The intent of a citation could be relevant to the section of the paper in which the citation appears."
+              },
+              {
+                "sim": 0.5332149863243103,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 0,
+                "text": "Identifying the intent of a citation in scientific papers (e.g., background information, use of methods, comparing results) is critical for machine reading of individual publications and automated analysis of the scientific literature."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.18653/v1/n19-1361",
+        "source_type": "pdf",
+        "pdf_path": "pdfs\\10.18653_v1_n19-1361.pdf"
+      }
+    },
+    {
+      "index": 19,
+      "reference": {
+        "raw": "[19] S. Haan, “Semanticcite: Citation verification with ai-powered full-text analysis and evidence-based reasoning,” 2025. [Online]. Available: https://arxiv.org/abs/2511.16198",
+        "doi": null,
+        "resolved_doi": "10.48550/arxiv.2511.16198",
+        "crossref_title": "SemanticCite: Citation Verification with AI-Powered Full-Text Analysis and Evidence-Based Reasoning",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.48550/arxiv.2511.16198",
+          "method": "milvus_cache",
+          "provider": "arxiv"
+        }
+      },
+      "sentences": [
+        "Haan’s SemanticCite is even closer at the systems level because it approaches citation verification as a workflow over full texts, citation contexts, and evidence passages [19]."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Haan’s SemanticCite is even closer at the systems level because it approaches citation verification as a workflow over full texts, citation contexts, and evidence passages [19].",
+            "label": "related",
+            "best_sim": 0.6188585162162781,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.6188585162162781,
+            "top_matches": [
+              {
+                "sim": 0.6188585162162781,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Contributions",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "This paper introduces SemanticCite, the first comprehensive AI-powered framework for automated fulltext citation verification. Unlike existing approaches that rely on abstract-level analysis or binary classification schemes, our system performs deep semantic analysis of complete source documents using a 4-class taxonomy that captures the nuanced relationships between citations and their references. Seman-ticCite bridges the gap between automated detection and actionable remediation by providing "
+              },
+              {
+                "sim": 0.6188585162162781,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Contributions",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "This paper introduces SemanticCite, the first comprehensive AI-powered framework for automated fulltext citation verification. Unlike existing approaches that rely on abstract-level analysis or binary classification schemes, our system performs deep semantic analysis of complete source documents using a 4-class taxonomy that captures the nuanced relationships between citations and their references. Seman-ticCite bridges the gap between automated detection and actionable remediation by providing "
+              },
+              {
+                "sim": 0.5863463878631592,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Conclusion",
+                "para_i": 2,
+                "sent_i": -1,
+                "text": "The framework's practical implications extend beyond academic manuscript review. By providing actionable guidance through detailed reasoning and evidence extraction, SemanticCite bridges the gap between automated analysis and human editorial decision-making, supporting iterative manuscript improvement rather than binary acceptance/rejection outcomes. The same 4-class taxonomy applies directly to AI-generated content verification, addressing critical quality control challenges in automated report"
+              },
+              {
+                "sim": 0.5775282382965088,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Novel Contributions",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "This work advances the field of automated citation verification through several key innovations. First, we introduce the first full-text citation verification system that moves beyond abstract-level analysis to examine complete source documents, addressing a critical limitation in existing approaches [8]. Our hybrid retrieval architecture, combining dense semantic search with sparse BM25 matching and neural reranking, demonstrates superior evidence selection compared to individual methods, parti"
+              },
+              {
+                "sim": 0.5701797604560852,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Novel Contributions",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "First, we introduce the first full-text citation verification system that moves beyond abstract-level analysis to examine complete source documents, addressing a critical limitation in existing approaches [8]."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.48550/arxiv.2511.16198",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 20,
+      "reference": {
+        "raw": "[20] L. Turnitin. (2025) ithenticate. [Online]. Available: https://www.ithenticate.com/",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "Turnitin [7] and iThenticate [20] are widely used in broader academic workflows, while Odevzdej [21] and CRZP [8] play a similar role in Czech and Slovak environments."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "no_source_text",
+        "download_status": "no_valid_doi"
+      }
+    },
+    {
+      "index": 21,
+      "reference": {
+        "raw": "[21] F. informatiky Masarykovy univerzity – V´yvojov´y t´ym IS MU. (2025) Odevzdej cz. [Online]. Available: https://odevzdej.cz/",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "Turnitin [7] and iThenticate [20] are widely used in broader academic workflows, while Odevzdej [21] and CRZP [8] play a similar role in Czech and Slovak environments."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "no_source_text",
+        "download_status": "no_valid_doi"
+      }
+    },
+    {
+      "index": 22,
+      "reference": {
+        "raw": "[22] L. Giray, “The problem with false positives: Ai detection unfairly accuses scholars of ai plagiarism,” The Serials Librarian, vol. 85, no. 5-6, pp. 181–189, 2024. [Online]. Available: https://doi.org/10.1080/0361526X.2024.2433256",
+        "doi": "10.1080/0361526X.2024.2433256",
+        "resolved_doi": "10.1080/0361526x.2024.2433256",
+        "crossref_title": "The Problem with False Positives: AI Detection Unfairly Accuses Scholars of AI Plagiarism",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1080/0361526x.2024.2433256",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Threshold selection, class imbalance, and overconfident interpretation can make reported performance look cleaner than the underlying evidence really is [22] [23].",
+        "This matters because automated integrity tools can easily look more certain than they really are [22].",
+        "Automated integrity tools can create false confidence if their outputs sound more certain than the evidence allows [22]."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Threshold selection, class imbalance, and overconfident interpretation can make reported performance look cleaner than the underlying evidence really is [22] [23].",
+            "label": "related",
+            "best_sim": 0.5320378541946411,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.5320378541946411,
+            "top_matches": [
+              {
+                "sim": 0.5320378541946411,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Voices of scholars from different parts of the globe",
+                "para_i": 5,
+                "sent_i": 6,
+                "text": "The lack of clear rules for dealing with false positives makes things even trickier."
+              },
+              {
+                "sim": 0.527809739112854,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Prologue",
+                "para_i": 1,
+                "sent_i": 6,
+                "text": "But these tools are not perfect and rely on patterns and statistical analyses, which often fail to distinguish between legitimate academic writing and potential violations."
+              },
+              {
+                "sim": 0.4860897660255432,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Algorithmic biases",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "One of the biggest issues with AI detection tools is the presence of algorithmic biases. These biases, often baked into the algorithms, can unfairly target specific writing styles or even cultural differences in language use. For instance, a detection tool might be more likely to flag work written by non-native English speakers, simply because their sentence structures differ from standard English conventions. This bias mirrors what Steele and Aronson called \"stereotype threat,\" where people fro"
+              },
+              {
+                "sim": 0.4860897660255432,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Algorithmic biases",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "One of the biggest issues with AI detection tools is the presence of algorithmic biases. These biases, often baked into the algorithms, can unfairly target specific writing styles or even cultural differences in language use. For instance, a detection tool might be more likely to flag work written by non-native English speakers, simply because their sentence structures differ from standard English conventions. This bias mirrors what Steele and Aronson called \"stereotype threat,\" where people fro"
+              },
+              {
+                "sim": 0.4724440574645996,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Lack of context understanding",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "Hetherington argues that without this deeper understanding, AI detection tools can easily misinterpret complex ideas as plagiarism or AI-generated content."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "This matters because automated integrity tools can easily look more certain than they really are [22].",
+            "label": "related",
+            "best_sim": 0.6194947957992554,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.6194947957992554,
+            "top_matches": [
+              {
+                "sim": 0.6194947957992554,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Voices of scholars from different parts of the globe",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "17 While these tools are supposed to help maintain academic integrity, they're not always perfect."
+              },
+              {
+                "sim": 0.5891355276107788,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Healthy skepticism",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "As these tools become more integrated into academic and professional settings, careful consideration of their accuracy is essential."
+              },
+              {
+                "sim": 0.5720682144165039,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Voices of scholars from different parts of the globe",
+                "para_i": 7,
+                "sent_i": 0,
+                "text": "As AI continues to evolve, there's a growing need for more accurate and reliable detection tools."
+              },
+              {
+                "sim": 0.5606845617294312,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Healthy skepticism",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "By fostering a critical mindset toward the outputs of AI detection tools, we may better navigate their limitations and ensure that assessments are fair and reliable."
+              },
+              {
+                "sim": 0.5513001680374146,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Prologue",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "While these tools supposedly aim to uphold standards, they often miss the mark."
+              }
+            ]
+          },
+          {
+            "citing_sentence": "Automated integrity tools can create false confidence if their outputs sound more certain than the evidence allows [22].",
+            "label": "related",
+            "best_sim": 0.5988198518753052,
+            "best_zone": "abstract",
+            "source_hint": "unclear",
+            "best_abstract_sim": 0.5988198518753052,
+            "best_body_sim": 0.5713621377944946,
+            "top_matches": [
+              {
+                "sim": 0.5988198518753052,
+                "zone": "abstract",
+                "level": "sentence",
+                "section_path": "abstract",
+                "para_i": 0,
+                "sent_i": 8,
+                "text": "While AI detection tools have value, a healthy skepticism is needed due to the risk of false positives and other limitations."
+              },
+              {
+                "sim": 0.5713621377944946,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Voices of scholars from different parts of the globe",
+                "para_i": 0,
+                "sent_i": 1,
+                "text": "17 While these tools are supposed to help maintain academic integrity, they're not always perfect."
+              },
+              {
+                "sim": 0.5666896104812622,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Voices of scholars from different parts of the globe",
+                "para_i": 1,
+                "sent_i": 0,
+                "text": "One of the biggest problems with AI detection tools is that they tend to produce false positives."
+              },
+              {
+                "sim": 0.5536651015281677,
+                "zone": "body",
+                "level": "section",
+                "section_path": "Healthy skepticism",
+                "para_i": -1,
+                "sent_i": -1,
+                "text": "Vital it is that we cultivate a healthy skepticism 33 regarding the results of AI detection tools due to the inherent risk of false positives. As these tools become more integrated into academic and professional settings, careful consideration of their accuracy is essential. Mislabeling genuine human work as AI-generated can lead to significant consequences, including reputational harm for individuals and a loss of trust in educational institutions. By fostering a critical mindset toward the out"
+              },
+              {
+                "sim": 0.5536651015281677,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Healthy skepticism",
+                "para_i": 0,
+                "sent_i": -1,
+                "text": "Vital it is that we cultivate a healthy skepticism 33 regarding the results of AI detection tools due to the inherent risk of false positives. As these tools become more integrated into academic and professional settings, careful consideration of their accuracy is essential. Mislabeling genuine human work as AI-generated can lead to significant consequences, including reputational harm for individuals and a loss of trust in educational institutions. By fostering a critical mindset toward the out"
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.1080/0361526x.2024.2433256",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 23,
+      "reference": {
+        "raw": "[23] T. Sa˘glam and L. Schmid, “Evaluating software plagiarism detection in the age of ai: Automated obfuscation and lessons for academic integrity,” 2025. [Online]. Available: https://arxiv.org/abs/2505.20158",
+        "doi": null,
+        "resolved_doi": "10.48550/arxiv.2505.20158",
+        "crossref_title": "Evaluating Software Plagiarism Detection in the Age of AI: Automated Obfuscation and Lessons for Academic Integrity",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.48550/arxiv.2505.20158",
+          "method": "milvus_cache",
+          "provider": "arxiv"
+        }
+      },
+      "sentences": [
+        "Threshold selection, class imbalance, and overconfident interpretation can make reported performance look cleaner than the underlying evidence really is [22] [23]."
+      ],
+      "occurrences": 3,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Threshold selection, class imbalance, and overconfident interpretation can make reported performance look cleaner than the underlying evidence really is [22] [23].",
+            "label": "related",
+            "best_sim": 0.5595773458480835,
+            "best_zone": "body",
+            "source_hint": "unclear",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.5595773458480835,
+            "top_matches": [
+              {
+                "sim": 0.5595773458480835,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Similarity Metrics",
+                "para_i": 3,
+                "sent_i": 4,
+                "text": "A threshold-based evaluation reduces plagiarism detection to a binary classification problem, which is insufficient due to the mentioned problem of overlap."
+              },
+              {
+                "sim": 0.5519102215766907,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Similarity Metrics",
+                "para_i": 3,
+                "sent_i": -1,
+                "text": "A common anti-pattern in existing works is evaluating plagiarism detectors using a fixed similarity threshold where scores above count as successful detec-tions, and those below do not. While this simplifies deriving precision, recall, and F1 scores, this approach is fundamentally flawed, as the threshold can arbitrarily influence results and it can be tuned to favor one approach. Since no universal threshold fits all datasets, thresholds are chosen arbitrarily. Due to varying similarity distrib"
+              },
+              {
+                "sim": 0.5229415893554688,
+                "zone": "body",
+                "level": "paragraph",
+                "section_path": "Similarity Metrics",
+                "para_i": 4,
+                "sent_i": -1,
+                "text": "For these reasons, we focus on the difference in similarity between plagiarism and non-plagiarism pairs. The larger this difference, the easier it is to detect plagiarism effectively. Thus, we measure to what extent a detection approach can produce such a difference between these pairs. This avoids overabstracting the problem into a binary classification. Varying statistical measures can be used to calculate the differences between these types of pairs. We use measures of central tendency like t"
+              },
+              {
+                "sim": 0.5192337036132812,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Subsequence Match Merging",
+                "para_i": 1,
+                "sent_i": 5,
+                "text": "Note that the high variance in plagiarism pair similarities affects the effect size measure [23]."
+              },
+              {
+                "sim": 0.5172656178474426,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Similarity Metrics",
+                "para_i": 3,
+                "sent_i": 1,
+                "text": "While this simplifies deriving precision, recall, and F1 scores, this approach is fundamentally flawed, as the threshold can arbitrarily influence results and it can be tuned to favor one approach."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.48550/arxiv.2505.20158",
+        "source_type": "pdf"
+      }
+    },
+    {
+      "index": 24,
+      "reference": {
+        "raw": "[24] Crossref. (2026) Crossref. [Online]. Available: https://www.crossref.org/",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "If the reference contains a DOI, the system uses it in a Crossref [24] API request to obtain precise metadata."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "no_source_text",
+        "download_status": "no_valid_doi"
+      }
+    },
+    {
+      "index": 25,
+      "reference": {
+        "raw": "[25] “Grobid,” https://github.com/kermitt2/grobid, 2008–2026.",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "After a source has been obtained, the text is converted into machine-readable structure and segmented into smaller passages with GROBID [25]."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "no_source_text",
+        "download_status": "no_valid_doi"
+      }
+    },
+    {
+      "index": 26,
+      "reference": {
+        "raw": "[26] D. Chung, “Challenges of translating idiomatic expressions: A cross-linguistic analysis at a university in hanoi, vietnam,” International Journal of Social Science and Human Research, vol. 07, 2024.",
+        "doi": null,
+        "resolved_doi": "10.47191/ijsshr/v7-i10-39",
+        "crossref_title": "Challenges of Translating Idiomatic Expressions: A Cross-Linguistic Analysis at a University in Hanoi, Vietnam",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.47191/ijsshr/v7-i10-39",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Translation adds another difficulty because idioms and terminology shifts can lower similarity even when the source is used correctly [26]."
+      ],
+      "occurrences": 1,
+      "verification": {
+        "status": "ok",
+        "results": [
+          {
+            "citing_sentence": "Translation adds another difficulty because idioms and terminology shifts can lower similarity even when the source is used correctly [26].",
+            "label": "supported",
+            "best_sim": 0.6809176802635193,
+            "best_zone": "body",
+            "source_hint": "body",
+            "best_abstract_sim": null,
+            "best_body_sim": 0.6809176802635193,
+            "top_matches": [
+              {
+                "sim": 0.6809176802635193,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "Semantic Issues",
+                "para_i": 0,
+                "sent_i": 3,
+                "text": "Semantic errors often arise when translators attempt a word-for-word translation, as the figurative meaning is entirely lost in the process."
+              },
+              {
+                "sim": 0.6677177548408508,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "I. INTRODUCTION 1.1.",
+                "para_i": 0,
+                "sent_i": 17,
+                "text": "Moreover, the non-literal nature of idioms often leads to misinterpretation when translators apply word-for-word translation methods."
+              },
+              {
+                "sim": 0.6524422764778137,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "2.2.5.",
+                "para_i": 0,
+                "sent_i": 8,
+                "text": "This structural discrepancy can obscure the intended meaning if translators attempt a literal translation."
+              },
+              {
+                "sim": 0.6485716104507446,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "2.2.5.",
+                "para_i": 0,
+                "sent_i": 11,
+                "text": "This difference in syntactic style and level of detail presents a unique challenge when translating idioms between the two languages."
+              },
+              {
+                "sim": 0.6484251022338867,
+                "zone": "body",
+                "level": "sentence",
+                "section_path": "VI. CONCLUSION",
+                "para_i": 0,
+                "sent_i": 2,
+                "text": "Linguistic factors, such as differences in syntax and idiomatic structure, coupled with cultural mismatches, contribute to the complexity of translating idioms accurately and meaningfully."
+              }
+            ]
+          }
+        ],
+        "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+        "verified_at": "2026-05-09T13:48:06Z",
+        "ref_key": "10.47191/ijsshr/v7-i10-39",
+        "source_type": "pdf"
+      }
+    }
+  ],
+  "unmatched_citations": [],
+  "source_pdf": "D:\\Uni\\bp-clanok\\.build\\main.pdf"
+}

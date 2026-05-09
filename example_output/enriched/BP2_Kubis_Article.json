@@ -1,0 +1,504 @@
+{
+  "summary": {
+    "total_references": 27,
+    "references_cited": 27,
+    "total_citations": 42,
+    "unmatched_citation_entries": 0
+  },
+  "links": [
+    {
+      "index": 1,
+      "reference": {
+        "raw": "[1] S. A. Mogull, “Accuracy of cited “facts” in medical research articles: A review of study methodology and recalculation of quotation error rate,” PLOS ONE, vol. 12, no. 9, pp. 1–17, 09 2017. [Online]. Available: https://doi.org/10.1371/journal.pone.0184727",
+        "doi": "10.1371/journal.pone.0184727",
+        "resolved_doi": "10.1371/journal.pone.0184727",
+        "crossref_title": "Accuracy of cited “facts” in medical research articles: A review of study methodology and recalculation of quotation error rate",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1371/journal.pone.0184727",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+        "That distinction matters because a citation can be formally correct and still be inaccurate, incomplete, or misleading [1] [2].",
+        "Mogull [1] separates minor citation inaccuracies from major content errors, where the cited source fails to substantiate or even contradicts the assertion."
+      ],
+      "occurrences": 3
+    },
+    {
+      "index": 2,
+      "reference": {
+        "raw": "[2] V. Pavlovic, T. Weissgerber, D. Stanisavljevic, T. Pekmezovic, O. Milicevic, J. M. Lazovic, A. Cirkovic, M. Savic, N. Rajovic, P. Piperac, N. Djuric, P. Madzarevic, A. Dimitrijevic, S. Randjelovic, E. Nestorovic, R. Akinyombo, A. Pavlovic, R. Ghamrawi, V. Garovic, and N. Milic, “How accurate are citations of frequently cited papers in biomedical literature?” Clin Sci (Lond), vol. 135, no. 5, pp. 671–681, mar 2021.",
+        "doi": null,
+        "resolved_doi": "10.1042/cs20201573",
+        "crossref_title": "How accurate are citations of frequently cited papers in biomedical literature?",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\nihms-1690179.pdf",
+          "final_url": "https://portlandpress.com/clinsci/article/135/5/671/227884/How-accurate-are-citations-of-frequently-cited",
+          "method": "http",
+          "provider": "http"
+        }
+      },
+      "sentences": [
+        "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+        "That distinction matters because a citation can be formally correct and still be inaccurate, incomplete, or misleading [1] [2].",
+        "[2] show that such claim-support failures also occur in real published literature."
+      ],
+      "occurrences": 3
+    },
+    {
+      "index": 3,
+      "reference": {
+        "raw": "[3] M. Mehregan, “Scientific journals must be alert to potential manipulation in citations and referencing,” Research Ethics, vol. 18, no. 2, pp. 163–168, 2022. [Online]. Available: https://doi.org/10.1177/17470161211068745",
+        "doi": "10.1177/17470161211068745",
+        "resolved_doi": "10.1177/17470161211068745",
+        "crossref_title": "Scientific journals must be alert to potential manipulation in citations and referencing",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1177/17470161211068745",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "A citation may be present, yet the cited source may support the claim only partially, be interpreted incorrectly, or be used in a misleading way [1] [2] [3].",
+        "Mehregan [3] further notes that some unsupported citations may reflect deliberate manipulation rather than simple carelessness."
+      ],
+      "occurrences": 2
+    },
+    {
+      "index": 4,
+      "reference": {
+        "raw": "[4] A. Pokharana and U. Garg, “A review on diverse algorithms used in the context of plagiarism detection,” in 2023 International Conference on Advancement in Computation & Computer Technologies (InCACCT), 2023, pp. 1–6.",
+        "doi": null,
+        "resolved_doi": "10.1109/incacct57535.2023.10141785",
+        "crossref_title": "A Review on diverse algorithms used in the context of Plagiarism Detection",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1109/incacct57535.2023.10141785",
+          "method": "milvus_cache",
+          "provider": "ieee"
+        }
+      },
+      "sentences": [
+        "Plagiarism is usually associated with direct copying, but in practice the broader issue also includes misleading paraphrase, weak attribution, and reuse of ideas that is formally cited but still ethically problematic [4].",
+        "Reviews of the field describe a gradual move from simple text matching toward more semantic and structural approaches, mainly because reused text is often changed before it appears in the suspicious document [4]."
+      ],
+      "occurrences": 2
+    },
+    {
+      "index": 5,
+      "reference": {
+        "raw": "[5] M. Potthast, A. Barr´on-Cede˜no, B. Stein, and P. Rosso, “Cross-language plagiarism detection,” Language Resources and Evaluation, vol. 45, no. 1, pp. 45–62, Mar 2011. [Online]. Available: https://doi.org/10.1007/s10579-009-9114-z",
+        "doi": "10.1007/s10579-009-9114-z",
+        "resolved_doi": "10.1007/s10579-009-9114-z",
+        "crossref_title": "Cross-language plagiarism detection",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1007/s10579-009-9114-z",
+          "method": "milvus_cache",
+          "provider": "springer"
+        }
+      },
+      "sentences": [
+        "This places the task between cross-lingual plagiarism detection, which studies reuse across languages [5], and citation verification, which asks whether the cited source supports the citing statement [6]."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 6,
+      "reference": {
+        "raw": "[6] A. Zeeb and P. Olsson, “Citation evaluation using large language models (llms) : Can llms evaluate citations in scholarly documents? an experimental study on chatgpt,” p. 43, 2024.",
+        "doi": null,
+        "resolved_doi": "10.1021/acs.chas.4c00097.s001",
+        "crossref_title": "Can Large Language Models (LLMs) Act as Virtual Safety Officers?",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1021/acs.chas.4c00097.s001",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "This places the task between cross-lingual plagiarism detection, which studies reuse across languages [5], and citation verification, which asks whether the cited source supports the citing statement [6].",
+        "Zeeb and Olsson explicitly study whether large language models can evaluate citations in scholarly documents [6]."
+      ],
+      "occurrences": 2
+    },
+    {
+      "index": 7,
+      "reference": {
+        "raw": "[7] L. Turnitin. (2025) Turnitin. [Online]. Available: https://www.turnitin.com/",
+        "doi": null,
+        "resolved_doi": "10.32672/jnkti.v8i1.8790.s1099",
+        "crossref_title": "Turnitin",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\10.32672_jnkti.v8i1.8790.s1099.pdf",
+          "method": "exists"
+        }
+      },
+      "sentences": [
+        "Systems such as Turnitin [7] and CRZP [8] are useful when the goal is to compare suspicious text against large repositories and flag lexical overlap.",
+        "Turnitin [7] and iThenticate [20] are widely used in broader academic workflows, while Odevzdej [21] and CRZP [8] play a similar role in Czech and Slovak environments."
+      ],
+      "occurrences": 2
+    },
+    {
+      "index": 8,
+      "reference": {
+        "raw": "[8] C. SR. (2025) Centr´alny register z´avereˇcn´ych a kvalifikaˇcn´ych pr´ac. [Online]. Available: https://crzp.cvtisr.sk/",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "Systems such as Turnitin [7] and CRZP [8] are useful when the goal is to compare suspicious text against large repositories and flag lexical overlap.",
+        "Turnitin [7] and iThenticate [20] are widely used in broader academic workflows, while Odevzdej [21] and CRZP [8] play a similar role in Czech and Slovak environments.",
+        "Corpus construction The main experiment used a corpus of 1000 bachelor and master theses collected from the Central Register of Theses and Dissertations [8]."
+      ],
+      "occurrences": 3
+    },
+    {
+      "index": 9,
+      "reference": {
+        "raw": "[9] N. Ehsan, A. Shakery, and F. W. Tompa, “Cross-lingual text alignment for fine-grained plagiarism detection,” J. Inf. Sci., vol. 45, no. 4, p. 443–459, Aug. 2019. [Online]. Available: https://doi.org/10.1177/0165551518787696",
+        "doi": "10.1177/0165551518787696",
+        "resolved_doi": "10.1177/0165551518787696",
+        "crossref_title": "Cross-lingual text alignment for fine-grained plagiarism detection",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1177/0165551518787696",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Early approaches relied on dictionary-based [9] translation or syntax-based [10] comparison."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 10,
+      "reference": {
+        "raw": "[10] V. K and D. Gupta, “Text plagiarism classification using syntax based linguistic features,” Expert Systems with Applications, vol. 88, pp. 448–464, 2017. [Online]. Available: https://www.sciencedirect.com/science/article/pii/S095741741730475X",
+        "doi": null,
+        "resolved_doi": "10.1016/j.eswa.2017.07.006",
+        "crossref_title": "Text plagiarism classification using syntax based linguistic features",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1016/j.eswa.2017.07.006",
+          "method": "milvus_cache",
+          "provider": "elsevier"
+        }
+      },
+      "sentences": [
+        "Early approaches relied on dictionary-based [9] translation or syntax-based [10] comparison."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 11,
+      "reference": {
+        "raw": "[11] W. G. S. Parwita, I. G. A. A. D. Indradewi, and I. N. S. W. Wijaya, “String matching based plagiarism detection for document in bahasa indonesia,” in 2019 5th International Conference on New Media Studies (CONMEDIA), 2019, pp. 54–58.",
+        "doi": null,
+        "resolved_doi": "10.1109/conmedia46929.2019.8981821",
+        "crossref_title": "String Matching based Plagiarism Detection for Document in Bahasa Indonesia",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\String_Matching_based_Plagiarism_Detection_for_Document_in_Bahasa_Indonesia.pdf",
+          "final_url": "https://ieeexplore.ieee.org/document/8981821/",
+          "method": "http",
+          "provider": "ieee"
+        }
+      },
+      "sentences": [
+        "Classical lexical methods such as string matching [11] and n-gram [12] comparison can still work when the suspicious text stays close to the source."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 12,
+      "reference": {
+        "raw": "[12] I. Bensalem, P. Rosso, and S. Chikhi, “Intrinsic plagiarism detection using n-gram classes,” in Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP), A. Moschitti, B. Pang, and W. Daelemans, Eds. Doha, Qatar: Association for Computational Linguistics, Oct. 2014, pp. 1459–1464. [Online]. Available: https://aclanthology.org/D14-1153/",
+        "doi": null,
+        "resolved_doi": "10.3115/v1/d14-1153",
+        "crossref_title": "Intrinsic Plagiarism Detection using N-gram Classes",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.3115/v1/d14-1153",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Classical lexical methods such as string matching [11] and n-gram [12] comparison can still work when the suspicious text stays close to the source."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 13,
+      "reference": {
+        "raw": "[13] A. Amirzhanov, C. Turan, and A. Makhmutova, “Plagiarism types and detection methods: a systematic survey of algorithms in text analysis,” Frontiers in Computer Science, vol. Volume 7 - 2025, 2025. [Online]. Available: https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp. 2025.1504725",
+        "doi": "10.3389/fcomp.2025.1504725",
+        "resolved_doi": "10.3389/fcomp.2025.1504725",
+        "crossref_title": "Plagiarism types and detection methods: a systematic survey of algorithms in text analysis",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.3389/fcomp.2025.1504725",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Their weakness is that performance drops when the author translates, paraphrases, or compresses the original meaning more aggressively [13].",
+        "[13] describe cross-lingual plagiarism detection as a problem that increasingly requires multilingual rather than purely lexical comparison."
+      ],
+      "occurrences": 2
+    },
+    {
+      "index": 14,
+      "reference": {
+        "raw": "[14] J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, “BERT: Pre-training of deep bidirectional transformers for language understanding,” Minneapolis, Minnesota, pp. 4171–4186, Jun. 2019. [Online]. Available: https://aclanthology.org/N19-1423/",
+        "doi": null,
+        "resolved_doi": "10.18653/v1/N19-1423",
+        "crossref_title": "Spectrum-BERT: Pre-training of Deep Bidirectional Transformers for Spectral Classification of Chinese Liquors_supp1-3374300.docx",
+        "download": {
+          "status": "downloaded",
+          "pdf_path":"pdfs\\N19-1423.pdf",
+          "final_url": "https://ieeexplore.ieee.org/ielx7/19/10367905/10462230/supp1-3374300.docx?arnumber=10462230",
+          "method": "failed",
+          "provider": "ieee"
+        }
+      },
+      "sentences": [
+        "BERT [14] showed that contextual pretraining can learn richer text representations than simple lexical features."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 15,
+      "reference": {
+        "raw": "[15] A. Conneau, K. Khandelwal, N. Goyal, V. Chaudhary, G. Wenzek, F. Guzm´an, E. Grave, M. Ott, L. Zettlemoyer, and V. Stoyanov, “Unsupervised cross-lingual representation learning at scale,” in Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, D. Jurafsky, J. Chai, N. Schluter, and J. Tetreault, Eds. Online: Association for Computational Linguistics, Jul. 2020, pp. 8440–8451. [Online]. Available: https://aclanthology.org/2020.acl-main.747/",
+        "doi": null,
+        "resolved_doi": "10.18653/v1/2020.acl-main.747",
+        "crossref_title": "Unsupervised Cross-lingual Representation Learning at Scale",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.18653/v1/2020.acl-main.747",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "XLM-R [15] extended this idea to many languages and remains a strong baseline for cross-lingual semantic tasks.",
+        "The testing used an XLM-R-based [15] sentence embedding model because it offers broad language coverage and good practical performance in cross-lingual similarity tasks [17]."
+      ],
+      "occurrences": 2
+    },
+    {
+      "index": 16,
+      "reference": {
+        "raw": "[16] D. Liang, H. Gonen, Y. Mao, R. Hou, N. Goyal, M. Ghazvininejad, L. Zettlemoyer, and M. Khabsa, “XLM-V: Overcoming the vocabulary bottleneck in multilingual masked language models,” Singapore, pp. 13 142–13 152, Dec. 2023. [Online]. Available: https://aclanthology.org/2023.emnlp-main.813/",
+        "doi": null,
+        "resolved_doi": "10.18653/v1/2023.emnlp-main.813",
+        "crossref_title": "XLM-V: Overcoming the Vocabulary Bottleneck in Multilingual Masked Language Models",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.18653/v1/2023.emnlp-main.813",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Newer encoder families such as XLM-V [16] continue this line by improving multilingual coverage and representation quality."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 17,
+      "reference": {
+        "raw": "[17] M. Abdous, P. Piroozfar, and B. MinaeiBidgoli, “Pests: Persian english cross lingual corpus for semantic textual similarity,” Language Resources and Evaluation, vol. 59, no. 2, pp. 1179–1199, Jun 2025. [Online]. Available: https://doi.org/10.1007/s10579-024-09759-3",
+        "doi": "10.1007/s10579-024-09759-3",
+        "resolved_doi": "10.1007/s10579-024-09759-3",
+        "crossref_title": "PESTS: Persian_English cross lingual corpus for semantic textual similarity",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1007/s10579-024-09759-3",
+          "method": "milvus_cache",
+          "provider": "springer"
+        }
+      },
+      "sentences": [
+        "Recent studies report good results for transformer-based multilingual embeddings in paraphrase-oriented and semantic cross-lingual settings [17].",
+        "The testing used an XLM-R-based [15] sentence embedding model because it offers broad language coverage and good practical performance in cross-lingual similarity tasks [17]."
+      ],
+      "occurrences": 2
+    },
+    {
+      "index": 18,
+      "reference": {
+        "raw": "[18] A. Cohan, W. Ammar, M. van Zuylen, and F. Cady, “Structural scaffolds for citation intent classification in scientific publications,” in Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), J. Burstein, C. Doran, and T. Solorio, Eds. Minneapolis, Minnesota: Association for Computational Linguistics, Jun. 2019, pp. 3586–3596. [Online]. Available: https://aclanthology.org/N19-1361/",
+        "doi": null,
+        "resolved_doi": "10.18653/v1/n19-1361",
+        "crossref_title": "Structural Scaffolds for Citation Intent Classification in Scientific Publications",
+        "download": {
+          "status": "downloaded",
+          "pdf_path": "pdfs\\10.18653_v1_n19-1361.pdf",
+          "final_url": "https://aclanthology.org/N19-1361.pdf",
+          "method": "http",
+          "provider": "http"
+        }
+      },
+      "sentences": [
+        "SciCite, for example, classifies citation intent in scientific writing [18]."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 19,
+      "reference": {
+        "raw": "[19] S. Haan, “Semanticcite: Citation verification with ai-powered full-text analysis and evidence-based reasoning,” 2025. [Online]. Available: https://arxiv.org/abs/2511.16198",
+        "doi": null,
+        "resolved_doi": "10.48550/arxiv.2511.16198",
+        "crossref_title": "SemanticCite: Citation Verification with AI-Powered Full-Text Analysis and Evidence-Based Reasoning",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.48550/arxiv.2511.16198",
+          "method": "milvus_cache",
+          "provider": "arxiv"
+        }
+      },
+      "sentences": [
+        "Haan’s SemanticCite is even closer at the systems level because it approaches citation verification as a workflow over full texts, citation contexts, and evidence passages [19]."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 20,
+      "reference": {
+        "raw": "[20] L. Turnitin. (2025) ithenticate. [Online]. Available: https://www.ithenticate.com/",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "Turnitin [7] and iThenticate [20] are widely used in broader academic workflows, while Odevzdej [21] and CRZP [8] play a similar role in Czech and Slovak environments."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 21,
+      "reference": {
+        "raw": "[21] F. informatiky Masarykovy univerzity – V´yvojov´y t´ym IS MU. (2025) Odevzdej cz. [Online]. Available: https://odevzdej.cz/",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "Turnitin [7] and iThenticate [20] are widely used in broader academic workflows, while Odevzdej [21] and CRZP [8] play a similar role in Czech and Slovak environments."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 22,
+      "reference": {
+        "raw": "[22] L. Giray, “The problem with false positives: Ai detection unfairly accuses scholars of ai plagiarism,” The Serials Librarian, vol. 85, no. 5-6, pp. 181–189, 2024. [Online]. Available: https://doi.org/10.1080/0361526X.2024.2433256",
+        "doi": "10.1080/0361526X.2024.2433256",
+        "resolved_doi": "10.1080/0361526x.2024.2433256",
+        "crossref_title": "The Problem with False Positives: AI Detection Unfairly Accuses Scholars of AI Plagiarism",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.1080/0361526x.2024.2433256",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Threshold selection, class imbalance, and overconfident interpretation can make reported performance look cleaner than the underlying evidence really is [22] [23].",
+        "This matters because automated integrity tools can easily look more certain than they really are [22].",
+        "Automated integrity tools can create false confidence if their outputs sound more certain than the evidence allows [22]."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 23,
+      "reference": {
+        "raw": "[23] T. Sa˘glam and L. Schmid, “Evaluating software plagiarism detection in the age of ai: Automated obfuscation and lessons for academic integrity,” 2025. [Online]. Available: https://arxiv.org/abs/2505.20158",
+        "doi": null,
+        "resolved_doi": "10.48550/arxiv.2505.20158",
+        "crossref_title": "Evaluating Software Plagiarism Detection in the Age of AI: Automated Obfuscation and Lessons for Academic Integrity",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.48550/arxiv.2505.20158",
+          "method": "milvus_cache",
+          "provider": "arxiv"
+        }
+      },
+      "sentences": [
+        "Threshold selection, class imbalance, and overconfident interpretation can make reported performance look cleaner than the underlying evidence really is [22] [23]."
+      ],
+      "occurrences": 3
+    },
+    {
+      "index": 24,
+      "reference": {
+        "raw": "[24] Crossref. (2026) Crossref. [Online]. Available: https://www.crossref.org/",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "If the reference contains a DOI, the system uses it in a Crossref [24] API request to obtain precise metadata."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 25,
+      "reference": {
+        "raw": "[25] “Grobid,” https://github.com/kermitt2/grobid, 2008–2026.",
+        "doi": null,
+        "resolved_doi": null,
+        "download": {
+          "status": "no_valid_doi"
+        }
+      },
+      "sentences": [
+        "After a source has been obtained, the text is converted into machine-readable structure and segmented into smaller passages with GROBID [25]."
+      ],
+      "occurrences": 1
+    },
+    {
+      "index": 26,
+      "reference": {
+        "raw": "[26] D. Chung, “Challenges of translating idiomatic expressions: A cross-linguistic analysis at a university in hanoi, vietnam,” International Journal of Social Science and Human Research, vol. 07, 2024.",
+        "doi": null,
+        "resolved_doi": "10.47191/ijsshr/v7-i10-39",
+        "crossref_title": "Challenges of Translating Idiomatic Expressions: A Cross-Linguistic Analysis at a University in Hanoi, Vietnam",
+        "download": {
+          "status": "already_indexed",
+          "final_url": "https://doi.org/10.47191/ijsshr/v7-i10-39",
+          "method": "milvus_cache",
+          "provider": "unknown"
+        }
+      },
+      "sentences": [
+        "Translation adds another difficulty because idioms and terminology shifts can lower similarity even when the source is used correctly [26]."
+      ],
+      "occurrences": 1
+    }
+  ],
+  "unmatched_citations": [],
+  "source_pdf": "D:\\Uni\\bp-clanok\\.build\\main.pdf"
+}

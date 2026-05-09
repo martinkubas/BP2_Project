@@ -1,0 +1,15 @@
+{
+  "created_at": "2026-05-09T13:48:06Z",
+  "embed_model": "sentence-transformers/paraphrase-xlm-r-multilingual-v1",
+  "totals": {
+    "works": 2,
+    "links": 67,
+    "verified_links": 49,
+    "skipped_links": 18
+  },
+  "labels": {
+    "supported": 32,
+    "related": 46,
+    "no_support": 0
+  }
+}
